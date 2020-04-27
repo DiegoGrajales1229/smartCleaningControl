@@ -5,6 +5,10 @@
  */
 package modelo;
 
+import control.BaseDatos;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  *
  * @author Diego Alejandro
@@ -84,6 +88,24 @@ public class administrador {
     @Override
     public String toString() {
         return "administrador{" + "idAdmin=" + idAdmin + ", nombre1Admin=" + nombre1Admin + ", nombre2Admin=" + nombre2Admin + ", apellido1Admin=" + apellido1Admin + ", apellido2Admin=" + apellido2Admin + ", correoAdmin=" + correoAdmin + '}';
+    }
+
+    public boolean insertAdmin(String sql) {
+        boolean t=false;
+        BaseDatos objCon = new BaseDatos();
+
+        if (objCon.crearConexion()) {
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                t=true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t= false;
+            }
+        }
+        
+        return t;
     }
     
     
