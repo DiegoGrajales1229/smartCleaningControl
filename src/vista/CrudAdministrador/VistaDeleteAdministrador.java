@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista;
+package vista.CrudAdministrador;
 
 import control.ControlAdministrador;
 import java.util.LinkedList;
