@@ -29,5 +29,21 @@ public class ControlAdministrador {
         
         
     }
-    
+
+    public LinkedList<administrador> consultarAdministradores() {
+        LinkedList<administrador> listaa = new LinkedList<>();
+        administrador objad = new administrador();
+        String sql = "select * from administradores;";
+        listaa = objad.consultarAdministradores(sql);
+        return listaa;
+    }
+
+    public boolean deleteAdmin(administrador objAdmin) {
+        boolean t=false;
+        administrador obj2 = new administrador();
+        String sql="delete * from administradores where idAdmin= " + objAdmin.getIdAdmin()+"";
+        t=obj2.deleteAdministrador(sql);
+        return t;
+    }
+
 }
