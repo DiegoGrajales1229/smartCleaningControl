@@ -40,12 +40,15 @@ public class empleado {
         this.salarioMensualEmpleado = salarioMensualEmpleado;
     }
 
-    public empleado(String nombre1Empleado, String nombre2Empleado, String apellido1Empleado, String apellido2Empleado) {
+    public empleado(String idEmpleado, String nombre1Empleado, String nombre2Empleado, String apellido1Empleado, String apellido2Empleado) {
+        this.idEmpleado = idEmpleado;
         this.nombre1Empleado = nombre1Empleado;
         this.nombre2Empleado = nombre2Empleado;
         this.apellido1Empleado = apellido1Empleado;
         this.apellido2Empleado = apellido2Empleado;
     }
+
+    
     
 
     public String getIdEmpleado() {
@@ -144,7 +147,7 @@ public class empleado {
     public LinkedList<empleado> consultarEmpleadoTelefonos(String sql) {
        LinkedList<empleado> em = new LinkedList<>();
         BaseDatos objb = new BaseDatos();
-        
+        String idEmpleado = "";
         String nombre1 = "";
         String nombre2 = "";
         String apellido1 = "";
@@ -154,11 +157,12 @@ public class empleado {
             try {
                 rs = objb.getSt().executeQuery(sql);
                 while (rs.next()) {
+                    idEmpleado = rs.getString("idEmpleado");
                     nombre1 = rs.getString("nombre1Empleado");
                     nombre2 = rs.getString("nombre2Empleado");
                     apellido1 = rs.getString("apellido1Empleado");
                     apellido2 = rs.getString("apellido2Empleado");
-                    em.add(new empleado(nombre1, nombre2, apellido1, apellido2));
+                    em.add(new empleado(idEmpleado, nombre1, nombre2, apellido1, apellido2));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(administrador.class.getName()).log(Level.SEVERE, null, ex);

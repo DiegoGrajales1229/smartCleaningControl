@@ -132,7 +132,7 @@ public class vistaInsertarTelefono extends javax.swing.JFrame {
 
         for (int i = 0; i < listaE.size(); i++) {
             empleado objetoE = listaE.get(i);
-            jComboBox1.addItem(objetoE.getNombre1Empleado()+""+objetoE.getNombre2Empleado()+""+objetoE.getApellido1Empleado()+""+objetoE.getApellido2Empleado());
+            jComboBox1.addItem(objetoE.getNombre1Empleado()+" "+objetoE.getNombre2Empleado()+" "+objetoE.getApellido1Empleado()+" "+objetoE.getApellido2Empleado());
         }
         
         
@@ -162,7 +162,7 @@ public class vistaInsertarTelefono extends javax.swing.JFrame {
         for (int i = 0; i < listaE.size(); i++) {
             empleado get = listaE.get(i);
             String empleados=String.valueOf(jComboBox1.getSelectedItem());
-            if(empleados.equals(get.getNombre1Empleado()+""+get.getNombre2Empleado()+""+get.getApellido1Empleado()+""+get.getApellido2Empleado())){
+            if(empleados.equals(get.getNombre1Empleado()+" "+get.getNombre2Empleado()+" "+get.getApellido1Empleado()+" "+get.getApellido2Empleado())){
                 idEmpleado1=get.getIdEmpleado();
             }
         }
