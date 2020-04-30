@@ -5,6 +5,13 @@
  */
 package modelo;
 
+import control.BaseDatos;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Diego Alejandro
@@ -32,6 +39,14 @@ public class empleado {
         this.idServicioDf = idServicioDf;
         this.salarioMensualEmpleado = salarioMensualEmpleado;
     }
+
+    public empleado(String nombre1Empleado, String nombre2Empleado, String apellido1Empleado, String apellido2Empleado) {
+        this.nombre1Empleado = nombre1Empleado;
+        this.nombre2Empleado = nombre2Empleado;
+        this.apellido1Empleado = apellido1Empleado;
+        this.apellido2Empleado = apellido2Empleado;
+    }
+    
 
     public String getIdEmpleado() {
         return idEmpleado;
@@ -124,6 +139,32 @@ public class empleado {
     @Override
     public String toString() {
         return "empleado{" + "idEmpleado=" + idEmpleado + ", nombre1Empleado=" + nombre1Empleado + ", nombre2Empleado=" + nombre2Empleado + ", apellido1Empleado=" + apellido1Empleado + ", apellido2Empleado=" + apellido2Empleado + ", fotoEmpleado=" + fotoEmpleado + ", correoEmpleado=" + correoEmpleado + ", direccionEmpleado=" + direccionEmpleado + ", numeroContratoEmpleado=" + numeroContratoEmpleado + ", idServicioDf=" + idServicioDf + ", salarioMensualEmpleado=" + salarioMensualEmpleado + '}';
+    }
+
+    public LinkedList<empleado> consultarEmpleadoTelefonos(String sql) {
+       LinkedList<empleado> em = new LinkedList<>();
+        BaseDatos objb = new BaseDatos();
+        
+        String nombre1 = "";
+        String nombre2 = "";
+        String apellido1 = "";
+        String apellido2 = "";
+        ResultSet rs = null;
+        if (objb.crearConexion()) {
+            try {
+                rs = objb.getSt().executeQuery(sql);
+                while (rs.next()) {
+                    nombre1 = rs.getString("nombre1Empleado");
+                    nombre2 = rs.getString("nombre2Empleado");
+                    apellido1 = rs.getString("apellido1Empleado");
+                    apellido2 = rs.getString("apellido2Empleado");
+                    em.add(new empleado(nombre1, nombre2, apellido1, apellido2));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(administrador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return em;
     }
     
     
