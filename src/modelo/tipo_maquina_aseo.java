@@ -5,6 +5,10 @@
  */
 package modelo;
 
+import control.BaseDatos;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  *
  * @author Diego Alejandro
@@ -44,6 +48,24 @@ public class tipo_maquina_aseo {
     @Override
     public String toString() {
         return "tipo_maquina_aseo{" + "idTipoMaquina=" + idTipoMaquina + ", tipoMquinaAseo=" + tipoMquinaAseo + '}';
+    }
+
+    public boolean insertTipoMaquina(String sql) {
+         boolean t=false;
+        BaseDatos objCon = new BaseDatos();
+
+        if (objCon.crearConexion()) {
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                t=true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t= false;
+            }
+        }
+        
+        return t;
     }
     
     

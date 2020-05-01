@@ -5,6 +5,10 @@
  */
 package vista.crudTipoProducto;
 
+import control.controlTipoProducto;
+import java.util.LinkedList;
+import modelo.tipo_producto_aseo;
+
 /**
  *
  * @author Juan Diego Tabares
@@ -14,8 +18,26 @@ public class vistaEliminarTipoProducto extends javax.swing.JFrame {
     /**
      * Creates new form vistaEliminarTipoProducto
      */
+    
+    LinkedList <tipo_producto_aseo> lista ;
     public vistaEliminarTipoProducto() {
+        
+    
         initComponents();
+        
+        lista=new LinkedList<>();
+        
+        controlTipoProducto objtp = new controlTipoProducto();
+
+        lista= objtp.consultarTipoProducto();
+
+        for (int i = 0; i < lista.size(); i++) {
+            tipo_producto_aseo objetotp = lista.get(i);
+            String item = String.valueOf(objetotp.getIdTipoProducto());
+            System.out.println(item);
+           combo.addItem(item+" - "+objetotp.getTipoProductoAseo());
+           
+    }
     }
 
     /**
@@ -39,8 +61,12 @@ public class vistaEliminarTipoProducto extends javax.swing.JFrame {
         jLabel1.setText("Eliminar tipo de producto");
 
         eliminar.setText("Eliminar");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
 
-        combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         combo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboActionPerformed(evt);
@@ -60,8 +86,8 @@ public class vistaEliminarTipoProducto extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel2)
                         .addGap(46, 46, 46)
-                        .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(combo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(eliminar)))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
@@ -101,6 +127,23 @@ public class vistaEliminarTipoProducto extends javax.swing.JFrame {
     private void comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboActionPerformed
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        // TODO add your handling code here:
+        controlTipoProducto control = new controlTipoProducto();
+        int id=0;
+        for (int i = 0; i < lista.size(); i++) {
+            tipo_producto_aseo obj = lista.get(i);
+            String item=String.valueOf(combo.getSelectedItem());
+            if(item.equals(String.valueOf(obj.getIdTipoProducto())+" - "+obj.getTipoProductoAseo())){
+                id=obj.getIdTipoProducto();
+                System.out.println("estoses:" + id);
+            }
+        }
+         
+        boolean t=control.deleteTipoProducto(id);
+        
+    }//GEN-LAST:event_eliminarActionPerformed
 
     /**
      * @param args the command line arguments
