@@ -21,7 +21,7 @@ public class ControlAdministrador {
             administrador getobjeto = listaAdmin.get(i);
             String sql="insert into administradores(nombre1Admin,nombre2Admin,apellido1Admin,apellido2Admin,correoAdmin) "
                     + "value('"+getobjeto.getNombre1Admin()+"','"+getobjeto.getNombre2Admin()+"','"+getobjeto.getApellido1Admin()+"','"+getobjeto.getApellido2Admin()+"','"+getobjeto.getCorreoAdmin()+"');";
-            t=objAdmin.insertAdmin(sql);
+            t=objAdmin.SQL(sql);
         }
         
         
@@ -42,7 +42,7 @@ public class ControlAdministrador {
         boolean t=false;
         administrador obj2 = new administrador();
         String sql="delete * from administradores where idAdmin= " + objAdmin.getIdAdmin()+"";
-        t=obj2.deleteAdministrador(sql);
+        t=obj2.SQL(sql);
         return t;
     }
 

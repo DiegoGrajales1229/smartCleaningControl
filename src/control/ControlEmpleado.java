@@ -5,10 +5,21 @@
  */
 package control;
 
+import java.util.LinkedList;
+import modelo.empleado;
+
 /**
  *
  * @author Diego Alejandro
  */
 public class ControlEmpleado {
+
+    public LinkedList<empleado> consultarEmpleados() {
+       LinkedList<empleado> listae = new LinkedList<>();
+        empleado objem = new empleado();
+        String sql = "select * from empleados;";
+        listae = objem.consultarEmpleadoTelefonos(sql);
+        return listae;
+    }
     
 }
