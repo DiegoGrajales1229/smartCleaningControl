@@ -41,7 +41,7 @@ public class ControlAdministrador {
     public boolean deleteAdmin(administrador objAdmin) {
         boolean t=false;
         administrador obj2 = new administrador();
-        String sql="delete * from administradores where idAdmin= " + objAdmin.getIdAdmin()+"";
+        String sql="delete from administradores where idAdmin= " + objAdmin.getIdAdmin()+"";
         t=obj2.SQL(sql);
         return t;
     }

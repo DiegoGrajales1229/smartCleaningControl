@@ -27,5 +27,22 @@ public class ControlTelefono {
         
         return t;
     }
+
+    public LinkedList<telefono> consultarSoloTelefonos() {
+        
+         LinkedList<telefono> listatf = new LinkedList<>();
+        telefono objte = new telefono();
+        String sql = "select * from telefonos;";
+        listatf = objte.consultarUnicamenteTelefonos(sql);
+        return listatf;
+    }
+
+    public boolean deleteTelefono(telefono objTel) {
+        boolean t=false;
+        telefono obj2 = new telefono();
+        String sql="delete from telefonos where idTelefono= " + objTel.getIdTelefono()+"";
+        t=obj2.SQL(sql);
+        return t;
+    }
     
 }
