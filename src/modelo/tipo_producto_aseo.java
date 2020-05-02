@@ -91,7 +91,7 @@ public class tipo_producto_aseo {
                     listatp.add(new tipo_producto_aseo(id, nombre));
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(administrador.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(tipo_producto_aseo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return listatp;

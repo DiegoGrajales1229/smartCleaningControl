@@ -138,6 +138,7 @@ public class vistaEliminarTipoProducto extends javax.swing.JFrame {
             if(item.equals(String.valueOf(obj.getIdTipoProducto())+" - "+obj.getTipoProductoAseo())){
                 id=obj.getIdTipoProducto();
                 System.out.println("estoses:" + id);
+                combo.remove(i);
             }
         }
          
