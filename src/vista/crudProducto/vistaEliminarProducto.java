@@ -5,6 +5,11 @@
  */
 package vista.crudProducto;
 
+import control.ControlProducto_aseo;
+import control.controlTipoProducto;
+import java.util.LinkedList;
+import modelo.productos_aseo;
+
 /**
  *
  * @author Juan Diego Tabares
@@ -14,9 +19,31 @@ public class vistaEliminarProducto extends javax.swing.JFrame {
     /**
      * Creates new form vistaEliminarProducto
      */
-    
+     LinkedList <productos_aseo> lista ;
     public vistaEliminarProducto() {
         initComponents();
+        
+        
+        
+    }
+    
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {
+        
+    
+        
+        lista=new LinkedList<>();
+        
+        ControlProducto_aseo controlp = new ControlProducto_aseo();
+
+        lista= controlp.consultarProducto();
+
+        for (int i = 0; i < lista.size(); i++) {
+            productos_aseo objetop = lista.get(i);
+            String item = String.valueOf(objetop.getIdProductoAseo());
+            System.out.println(item);
+           combo.addItem(item+" - "+objetop.getNombreProductoAseo());
+        }
+    
     }
 
     /**
@@ -28,21 +55,73 @@ public class vistaEliminarProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        combo = new javax.swing.JComboBox<>();
+        eliminar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        eliminar.setText("Eliminar");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(eliminar)
+                    .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(154, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(eliminar)
+                .addContainerGap(113, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        // TODO add your handling code here:
+        String item = String.valueOf(combo.getSelectedItem());
+        String[] sItem= item.split(" - ");
+        int id= Integer.parseInt (sItem[0]);
+        
+        combo.remove(combo.getSelectedIndex()); // remueve el index
+//        combo.removeItem(combo.getSelectedItem());   //remueve el item 
+        
+       ControlProducto_aseo controlp= new ControlProducto_aseo();
+       controlp.deleteProducto(id);
+
+
+    }//GEN-LAST:event_eliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +159,8 @@ public class vistaEliminarProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> combo;
+    private javax.swing.JButton eliminar;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

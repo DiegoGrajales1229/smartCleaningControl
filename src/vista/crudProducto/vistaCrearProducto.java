@@ -31,6 +31,7 @@ public class vistaCrearProducto extends javax.swing.JFrame {
         crear.setVisible(false);
         
         lista=new LinkedList<>();
+        listaProducto=new LinkedList<>();
         
         controlTipoProducto objtp = new controlTipoProducto();
 
@@ -205,11 +206,12 @@ public class vistaCrearProducto extends javax.swing.JFrame {
         String[] splt= idTp.split(" - ");
         
         int idTipoP= Integer.parseInt(splt[0]);
+        System.out.println("será? : "+idTipoP);
         
         productos_aseo producto = new productos_aseo( nombreP, precioP, fechaP, idTipoP);
         
-        listaProducto.add(producto);
-        
+       boolean b = listaProducto.add(producto);
+        System.out.println("es? : "+ b);
         
         //reset
         nombreTx.setText("");

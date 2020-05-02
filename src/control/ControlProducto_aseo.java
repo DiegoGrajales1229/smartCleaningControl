@@ -20,8 +20,8 @@ public class ControlProducto_aseo {
        productos_aseo objTiProAs=new  productos_aseo();
         for (int i = 0; i <listaProAs.size(); i++) {
            productos_aseo pa = listaProAs.get(i);
-            String sql="insert into productos_aseo (nombreProductoAseo, precioProductoAseo, fechaDeCompraPA) "
-                    + "value(' "+ pa.getNombreProductoAseo()+" ' , " + pa.getPrecioProductoAseo()+", ' "+pa.getFechaDeCompra()  +" ');";
+            String sql="insert into productos_aseo (nombreProductoAseo, precioProductoAseo, fechaDeCompraPA, idTipoProductof) "
+                    + "value('"+ pa.getNombreProductoAseo()+"' , " + pa.getPrecioProductoAseo()+", '"+pa.getFechaDeCompra()  +"' , "+ pa.getIdTipoProductof() +");";
             
             t=pa.sqlProductoAseo(sql);
         }
