@@ -3,7 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Diego%20Alejandro/Documents/NetBeansProjects/smartCleaningControl/src/vista/CrudTipoMaquina/vistaInsertarTipoMaquina.java</file>
+<<<<<<< HEAD
+            <file>file:/C:/Users/Diego%20Alejandro/Documents/NetBeansProjects/smartCleaningControl/src/control/ControlEmpleado.java</file>
+            <file>file:/C:/Users/Diego%20Alejandro/Documents/NetBeansProjects/smartCleaningControl/src/modelo/empleado.java</file>
+            <file>file:/C:/Users/Diego%20Alejandro/Documents/NetBeansProjects/smartCleaningControl/src/control/ControlTelefono.java</file>
+            <file>file:/C:/Users/Diego%20Alejandro/Documents/NetBeansProjects/smartCleaningControl/src/vista/CrudTelefono/vistaInsertarTelefono.java</file>
+            <file>file:/C:/Users/Diego%20Alejandro/Documents/NetBeansProjects/smartCleaningControl/src/modelo/administrador.java</file>
+            <file>file:/C:/Users/Diego%20Alejandro/Documents/NetBeansProjects/smartCleaningControl/src/modelo/telefono.java</file>
+=======
+            <file>file:/D:/JavaDocumentos/gitHub/smartCleaningControl/src/vista/CrudAdministrador/VistaDeleteAdministrador.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/smartCleaningControl/src/vista/crudTipoProducto/vistaEliminarTipoProducto.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/smartCleaningControl/src/modelo/administrador.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/smartCleaningControl/src/vista/crudTipoProducto/vistaInsertarTipoProducto.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/smartCleaningControl/src/control/controlTipoProducto.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/smartCleaningControl/src/modelo/tipo_producto_aseo.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/smartCleaningControl/src/control/ControlAdministrador.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/smartCleaningControl/src/smartcleaningcontrol/SmartCleaningControl.java</file>
+>>>>>>> 84e9c245e48b4f8d2b2459931190e52b679d5ad6
         </group>
     </open-files>
 </project-private>

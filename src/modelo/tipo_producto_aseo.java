@@ -7,8 +7,12 @@ package modelo;
 
 
 import control.BaseDatos;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -52,7 +56,7 @@ public class tipo_producto_aseo {
         return "tipo_producto_aseo{" + "idTipoProducto=" + idTipoProducto + ", tipoProductoAseo=" + tipoProductoAseo + '}';
     }
     
-    public boolean insertTipoProducto(String sql) {
+    public boolean sqlTipoProducto(String sql) {
         boolean t=false;
         BaseDatos objCon = new BaseDatos();
 
@@ -70,6 +74,31 @@ public class tipo_producto_aseo {
         return t;
     }
     
+     public LinkedList<tipo_producto_aseo> consultarTipoProducto(String sql) {
+        LinkedList<tipo_producto_aseo> listatp = new LinkedList<>();
+        BaseDatos objb = new BaseDatos();
+        int id = 0;
+        String nombre = "";
+       
+        ResultSet rs = null;
+        if (objb.crearConexion()) {
+            try {
+                rs = objb.getSt().executeQuery(sql);
+                while (rs.next()) {
+                    id = rs.getInt("idTipoProducto");
+                    nombre = rs.getString("tipoProductoAseo");
+                    
+                    listatp.add(new tipo_producto_aseo(id, nombre));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(tipo_producto_aseo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return listatp;
+
+    }
+     
+      
     
     
 }

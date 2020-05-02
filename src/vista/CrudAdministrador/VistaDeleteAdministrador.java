@@ -48,6 +48,12 @@ public class VistaDeleteAdministrador extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Eliminar un administrador");
 
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("  Nombre completo del administrador");
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -123,6 +129,10 @@ public class VistaDeleteAdministrador extends javax.swing.JFrame {
         boolean t=objca.deleteAdmin(objAdmin);
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
