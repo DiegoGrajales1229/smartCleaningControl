@@ -119,8 +119,8 @@ public class productos_aseo {
             try {
                 rs = objb.getSt().executeQuery(sql);
                 while (rs.next()) {
-                    id = rs.getInt("idTipoProducto");
-                    nombre = rs.getString("tipoProductoAseo");
+                    id = rs.getInt("idProductoAseo");
+                    nombre = rs.getString("nombreProductoAseo");
                     precio= rs.getDouble("precioProductoAseo");
                      fecha = rs.getString("fechaDeCompraPA");
                      idTp= rs.getInt("idTipoProductof");

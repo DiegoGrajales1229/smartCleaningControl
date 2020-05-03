@@ -7,6 +7,7 @@ package vista.crudTipoProducto;
 
 import control.controlTipoProducto;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import modelo.tipo_producto_aseo;
 
 /**
@@ -138,11 +139,19 @@ public class vistaEliminarTipoProducto extends javax.swing.JFrame {
             if(item.equals(String.valueOf(obj.getIdTipoProducto())+" - "+obj.getTipoProductoAseo())){
                 id=obj.getIdTipoProducto();
                 System.out.println("estoses:" + id);
-                combo.remove(i);
+                 combo.removeItem(combo.getSelectedItem());
             }
         }
          
         boolean t=control.deleteTipoProducto(id);
+        
+        
+         if(t){
+            JOptionPane.showMessageDialog(rootPane, "Se eliminó exitosamente");
+            lista.clear();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "No se eliminó los datos");
+        }
         
     }//GEN-LAST:event_eliminarActionPerformed
 

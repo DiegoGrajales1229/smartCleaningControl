@@ -8,6 +8,7 @@ package vista.crudProducto;
 import control.ControlProducto_aseo;
 import control.controlTipoProducto;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import modelo.productos_aseo;
 
 /**
@@ -23,28 +24,14 @@ public class vistaEliminarProducto extends javax.swing.JFrame {
     public vistaEliminarProducto() {
         initComponents();
         
-        
-        
-    }
-    
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {
-        
-    
-        
         lista=new LinkedList<>();
         
-        ControlProducto_aseo controlp = new ControlProducto_aseo();
-
-        lista= controlp.consultarProducto();
-
-        for (int i = 0; i < lista.size(); i++) {
-            productos_aseo objetop = lista.get(i);
-            String item = String.valueOf(objetop.getIdProductoAseo());
-            System.out.println(item);
-           combo.addItem(item+" - "+objetop.getNombreProductoAseo());
-        }
-    
     }
+    
+    
+    
+  
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,6 +47,11 @@ public class vistaEliminarProducto extends javax.swing.JFrame {
         eliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         eliminar.setText("Eliminar");
         eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -114,14 +106,35 @@ public class vistaEliminarProducto extends javax.swing.JFrame {
         String[] sItem= item.split(" - ");
         int id= Integer.parseInt (sItem[0]);
         
-        combo.remove(combo.getSelectedIndex()); // remueve el index
-//        combo.removeItem(combo.getSelectedItem());   //remueve el item 
+//        combo.remove(combo.getSelectedIndex()); // remueve el index
+        combo.removeItem(combo.getSelectedItem());   //remueve el item 
         
        ControlProducto_aseo controlp= new ControlProducto_aseo();
-       controlp.deleteProducto(id);
+      boolean t= controlp.deleteProducto(id);
+       
+       if(t){
+            JOptionPane.showMessageDialog(rootPane, "Se eliminó exitosamente");
+            lista.clear();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "No se eliminó los datos");
+        }
 
 
     }//GEN-LAST:event_eliminarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+          ControlProducto_aseo controlp = new ControlProducto_aseo();
+
+        lista= controlp.consultarProducto();
+
+        for (int i = 0; i < lista.size(); i++) {
+            productos_aseo objetop = lista.get(i);
+            String item = String.valueOf(objetop.getIdProductoAseo());
+            System.out.println(item);
+           combo.addItem(item+" - "+objetop.getNombreProductoAseo());
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
