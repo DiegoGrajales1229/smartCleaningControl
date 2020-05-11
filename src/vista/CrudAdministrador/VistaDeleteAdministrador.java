@@ -109,7 +109,7 @@ public class VistaDeleteAdministrador extends javax.swing.JFrame {
 
         for (int i = 0; i < admin.size(); i++) {
             administrador objetoAdmin = admin.get(i);
-            jComboBox1.addItem(objetoAdmin.getNombre1Admin()+""+objetoAdmin.getNombre2Admin()+""+objetoAdmin.getApellido1Admin()+""+objetoAdmin.getApellido2Admin());
+            jComboBox1.addItem(objetoAdmin.getNombre1Admin()+" "+objetoAdmin.getNombre2Admin()+" "+objetoAdmin.getApellido1Admin()+" " +objetoAdmin.getApellido2Admin());
         }
 
 
@@ -121,7 +121,7 @@ public class VistaDeleteAdministrador extends javax.swing.JFrame {
         for (int i = 0; i < admin.size(); i++) {
             administrador get = admin.get(i);
             String administradores=String.valueOf(jComboBox1.getSelectedItem());
-            if(administradores.equals(get.getNombre1Admin()+""+get.getNombre2Admin()+""+get.getApellido1Admin()+""+get.getApellido2Admin())){
+            if(administradores.equals(get.getNombre1Admin()+" "+get.getNombre2Admin()+" "+get.getApellido1Admin()+" "+get.getApellido2Admin())){
                 idAdmin1=get.getIdAdmin();
             }
         }
