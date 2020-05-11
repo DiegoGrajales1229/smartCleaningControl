@@ -104,6 +104,7 @@ public class producto_unidad {
         LinkedList<producto_unidad> listapu = new LinkedList<>();
         BaseDatos objb = new BaseDatos();
         int id = 0;
+
         int idPA = 0;
         int idDS= 0;
         String fecha="";
@@ -130,10 +131,11 @@ public class producto_unidad {
 
     }
 
-    public LinkedList<producto_unidad> consultarProductoUnidadAdv(String sql) {
-        LinkedList<producto_unidad> listapu = new LinkedList<>();
+    public LinkedList<producto_unidadADV> consultarProductoUnidadADV(String sql) {
+        LinkedList<producto_unidadADV> listapu = new LinkedList<>();
         BaseDatos objb = new BaseDatos();
         int id = 0;
+
         String nombrePA="";
         int idDS= 0;
         String nombreUR="";
@@ -156,7 +158,7 @@ public class producto_unidad {
                      fecha = rs.getString("fecha");
                     
                     
-                    listapu.add(new producto_unidad(id, idPA, fecha, idDS));
+                    listapu.add(new producto_unidadADV(id, nombrePA, idDS, nombreUR, fecha));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(producto_unidad.class.getName()).log(Level.SEVERE, null, ex);
@@ -165,6 +167,7 @@ public class producto_unidad {
         return listapu;
 
     }
+
     
     public LinkedList<LinkedList>  busquedaAvanzada (String sql){
     LinkedList <LinkedList>lista= new LinkedList<>();
@@ -178,4 +181,8 @@ public class producto_unidad {
     return lista;
     }
     
+
+
+
+   
 }

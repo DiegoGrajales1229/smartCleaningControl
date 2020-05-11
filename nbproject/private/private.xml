@@ -5,6 +5,8 @@
         <group>
             <file>file:/D:/JavaDocumentos/gitHub/smartCleaningControl/src/vista/crudProducto/vistaEliminarProducto.java</file>
             <file>file:/D:/JavaDocumentos/gitHub/smartCleaningControl/src/control/ControlProducto_aseo.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/smartCleaningControl/src/vista/crudUnidadDeProducto/vistaInsertarUnidadDeProducto.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/smartCleaningControl/src/modelo/producto_unidadADV.java</file>
             <file>file:/D:/JavaDocumentos/gitHub/smartCleaningControl/src/vista/crudUnidadDeProducto/vistaEliminarUnidadDeProducto.java</file>
             <file>file:/D:/JavaDocumentos/gitHub/smartCleaningControl/src/control/ControlProducto_Unidad.java</file>
             <file>file:/D:/JavaDocumentos/gitHub/smartCleaningControl/src/modelo/productos_aseo.java</file>

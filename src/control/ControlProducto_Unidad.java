@@ -7,6 +7,7 @@ package control;
 
 import java.util.LinkedList;
 import modelo.producto_unidad;
+import modelo.producto_unidadADV;
 
 /**
  *
@@ -41,7 +42,11 @@ public class ControlProducto_Unidad {
         String sql = "select * from producto_unidad;";
         
         String sql2="SELECT producto_unidad.idProductoU, productos_aseo.nombreProductoAseo npa, producto_unidad.idServicioDf untService,\n" +
+
 " unidades_residenciales.nombreUnidadResidencial nur, producto_unidad.fechaUnidadProducto FROM (producto_unidad \n" +
+
+" unidades_residenciales.nombreUnidadResidencial nur, producto_unidad.fechaUnidadProducto fecha FROM (producto_unidad \n" +
+
 " LEFT JOIN unidades_residenciales ur ON untService= ur.nitUnidad)\n" +
 " LEFT JOIN productos_aseo pa ON pa.idProductoAseo= producto_unidad.idProductoAseof\n" +
 " ORDER BY  idServicioDf, fechaUnidadProducto;";
@@ -49,6 +54,26 @@ public class ControlProducto_Unidad {
         lista = obj.consultarProductoUnidad(sql);
         return lista;
     }
+     
+     
+      public LinkedList<producto_unidadADV> consultarProductoUnidadAdv() {
+     LinkedList<producto_unidadADV> lista = new LinkedList<>();
+        producto_unidad obj = new producto_unidad();
+        
+     
+        String sql2="SELECT producto_unidad.idProductoU, productos_aseo.nombreProductoAseo npa, producto_unidad.idServicioDf untService,\n" +
+
+" unidades_residenciales.nombreUnidadResidencial nur, producto_unidad.fechaUnidadProducto FROM (producto_unidad \n" +
+
+" unidades_residenciales.nombreUnidadResidencial nur, producto_unidad.fechaUnidadProducto fecha FROM (producto_unidad \n" +
+
+" LEFT JOIN unidades_residenciales ur ON untService= ur.nitUnidad)\n" +
+" LEFT JOIN productos_aseo pa ON pa.idProductoAseo= producto_unidad.idProductoAseof\n" +
+" ORDER BY   YEAR (fechaUnidadProducto) DESC, MONTH(fechaUnidadProducto) DESC, DAY(fechaUnidadProducto) DESC   GROUP BY idServicioDf;";
+                
+        lista = obj.consultarProductoUnidadADV(sql2);
+        return lista;
+      }
 
     public boolean deleteProductoUnidad(int id) {
         boolean t=false;
