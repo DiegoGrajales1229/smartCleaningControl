@@ -15,11 +15,24 @@ import modelo.empleado;
 public class ControlEmpleado {
 
     public LinkedList<empleado> consultarEmpleados() {
-       LinkedList<empleado> listae = new LinkedList<>();
+        LinkedList<empleado> listae = new LinkedList<>();
         empleado objem = new empleado();
         String sql = "select * from empleados;";
         listae = objem.consultarEmpleadoTelefonos(sql);
         return listae;
     }
-    
+
+    public boolean insertarEmpleados(empleado objEm) {
+
+        boolean t = false;
+        empleado objEmp2 = new empleado();
+        String sql = "";
+        sql = "insert into empleados(nombre1Empleado,nombre2Empleado,apellido1Empleado,apellido2Empleado,fotoEmpleado,correoEmpleado,direccionEmpleado,numeroContratoEmpleado,salarioMensualEmpleado,idServicioDf) "
+                + "values(?,?,?,?,?,?,?,?,?,?)";
+        t = objEmp2.insertarEmpleados(objEm, sql);
+
+        return t;
+
+    }
+
 }

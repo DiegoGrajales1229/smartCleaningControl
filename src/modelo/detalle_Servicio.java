@@ -5,6 +5,13 @@
  */
 package modelo;
 
+import control.BaseDatos;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Diego Alejandro
@@ -29,6 +36,13 @@ public class detalle_Servicio {
         this.fechaVenceServicio = fechaVenceServicio;
         this.nitUnidadf = nitUnidadf;
     }
+
+    public detalle_Servicio(String fechaInicioServicio, String fechaVenceServicio) {
+        this.fechaInicioServicio = fechaInicioServicio;
+        this.fechaVenceServicio = fechaVenceServicio;
+    }
+    
+    
 
     public int getIdServicioD() {
         return idServicioD;
@@ -65,6 +79,33 @@ public class detalle_Servicio {
     @Override
     public String toString() {
         return "detalle_Servicio{" + "idServicioD=" + idServicioD + ", fechaInicioServicio=" + fechaInicioServicio + ", fechaVenceServicio=" + fechaVenceServicio + ", nitUnidadf=" + nitUnidadf + '}';
+    }
+
+    public LinkedList<detalle_Servicio> consultarUnicamenteRangoFechas(String sql) {
+        LinkedList<detalle_Servicio> lds = new LinkedList<>();
+        BaseDatos objb = new BaseDatos();
+       
+        String fecha1 = "";
+        String fecha2="";
+        String nit="";
+       
+        ResultSet rs = null;
+        if (objb.crearConexion()) {
+            try {
+                rs = objb.getSt().executeQuery(sql);
+                while (rs.next()) {
+                    
+                    fecha1 = rs.getString("fechaInicioServicio");
+                    fecha2 = rs.getString("fechaVenceServicio");
+                    nit = rs.getString("nitUnidadf");
+                   
+                    lds.add(new detalle_Servicio(fecha1, fecha2, nit));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(administrador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return lds;
     }
     
 }
