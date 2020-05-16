@@ -6,9 +6,6 @@
 package modelo;
 
 import control.BaseDatos;
-import java.io.File;
-import java.io.FileInputStream;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -22,28 +19,15 @@ import java.util.logging.Logger;
 public class empleado {
 
     private String idEmpleado, nombre1Empleado, nombre2Empleado, apellido1Empleado,
-            apellido2Empleado, fotoEmpleado, correoEmpleado, direccionEmpleado;
-    private int idServicioDf,numeroContratoEmpleado;
+            apellido2Empleado, fotoEmpleado, correoEmpleado, direccionEmpleado, numeroContratoEmpleado;
+    private int idServicioDf;
     private double salarioMensualEmpleado;
 
     public empleado() {
     }
 
-    public empleado(String idEmpleado, String nombre1Empleado, String nombre2Empleado, String apellido1Empleado, String apellido2Empleado, String fotoEmpleado, String correoEmpleado, String direccionEmpleado, int numeroContratoEmpleado, int idServicioDf, double salarioMensualEmpleado) {
+    public empleado(String idEmpleado, String nombre1Empleado, String nombre2Empleado, String apellido1Empleado, String apellido2Empleado, String fotoEmpleado, String correoEmpleado, String direccionEmpleado, String numeroContratoEmpleado, int idServicioDf, double salarioMensualEmpleado) {
         this.idEmpleado = idEmpleado;
-        this.nombre1Empleado = nombre1Empleado;
-        this.nombre2Empleado = nombre2Empleado;
-        this.apellido1Empleado = apellido1Empleado;
-        this.apellido2Empleado = apellido2Empleado;
-        this.fotoEmpleado = fotoEmpleado;
-        this.correoEmpleado = correoEmpleado;
-        this.direccionEmpleado = direccionEmpleado;
-        this.numeroContratoEmpleado=numeroContratoEmpleado;
-        this.idServicioDf = idServicioDf;
-        this.salarioMensualEmpleado = salarioMensualEmpleado;
-    }
-
-    public empleado(String nombre1Empleado, String nombre2Empleado, String apellido1Empleado, String apellido2Empleado, String fotoEmpleado, String correoEmpleado, String direccionEmpleado, int numeroContratoEmpleado, int idServicioDf, double salarioMensualEmpleado) {
         this.nombre1Empleado = nombre1Empleado;
         this.nombre2Empleado = nombre2Empleado;
         this.apellido1Empleado = apellido1Empleado;
@@ -55,8 +39,6 @@ public class empleado {
         this.idServicioDf = idServicioDf;
         this.salarioMensualEmpleado = salarioMensualEmpleado;
     }
-    
-    
 
     public empleado(String idEmpleado, String nombre1Empleado, String nombre2Empleado, String apellido1Empleado, String apellido2Empleado) {
         this.idEmpleado = idEmpleado;
@@ -133,11 +115,11 @@ public class empleado {
         this.direccionEmpleado = direccionEmpleado;
     }
 
-    public int getNumeroContratoEmpleado() {
+    public String getNumeroContratoEmpleado() {
         return numeroContratoEmpleado;
     }
 
-    public void setNumeroContratoEmpleado(int numeroContratoEmpleado) {
+    public void setNumeroContratoEmpleado(String numeroContratoEmpleado) {
         this.numeroContratoEmpleado = numeroContratoEmpleado;
     }
 
@@ -187,42 +169,6 @@ public class empleado {
             }
         }
         return em;
-    }
-
-    
-
-    public boolean insertarEmpleados(empleado objEm, String sql) {
-       boolean t = false;
-        BaseDatos objb = new BaseDatos();
-        FileInputStream fis = null;
-        PreparedStatement ps = null;
-        try {
-            if (objb.crearConexion()) {
-                objb.getConexion().setAutoCommit(false);
-                File file = new File(objEm.getFotoEmpleado());
-                fis = new FileInputStream(file);
-                ps = objb.getConexion().prepareStatement(sql);
-                ps.setString(1, objEm.getNombre1Empleado());
-                ps.setString(2, objEm.getNombre2Empleado());
-                ps.setString(3, objEm.getApellido1Empleado());
-                ps.setString(4, objEm.getApellido2Empleado());
-                ps.setBinaryStream(5, fis, (int) file.length());
-                ps.setString(6, objEm.getCorreoEmpleado());
-                ps.setString(7, objEm.getDireccionEmpleado());
-                ps.setInt(8, objEm.getNumeroContratoEmpleado());
-                ps.setDouble(9, objEm.getSalarioMensualEmpleado());
-                ps.setInt(10, objEm.getIdServicioDf());
-
-                ps.executeUpdate();
-                objb.getConexion().commit();
-                t = true;
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
-            t = false;
-        }
-
-        return t;
     }
     
     
