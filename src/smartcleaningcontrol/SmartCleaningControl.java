@@ -16,7 +16,6 @@ public class SmartCleaningControl {
     /**
      * @param args the command line arguments
      */
-    //hola
     public static void main(String[] args) {
         BaseDatos objB=new BaseDatos();
         boolean t=objB.crearConexion();
