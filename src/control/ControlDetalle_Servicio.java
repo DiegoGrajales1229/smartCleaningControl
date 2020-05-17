@@ -5,17 +5,24 @@
  */
 package control;
 
-<<<<<<< HEAD
-=======
+
 import java.util.LinkedList;
 import modelo.detalle_Servicio;
 import modelo.empleado;
 
->>>>>>> parent of 930e45e... Revert "Merge branch 'master' of https://github.com/DiegoGrajales1229/smartCleaningControl"
+
 /**
  *
  * @author Diego Alejandro
  */
 public class ControlDetalle_Servicio {
+
+    public LinkedList<detalle_Servicio> consultarDetalleServicio() {
+        LinkedList<detalle_Servicio> listads = new LinkedList<>();
+        detalle_Servicio objds = new detalle_Servicio();
+        String sql = "select * from detalles_servicios;";
+        listads = objds.consultarUnicamenteRangoFechas(sql);
+        return listads;
+    }
     
 }
