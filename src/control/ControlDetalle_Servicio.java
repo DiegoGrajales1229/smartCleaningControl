@@ -5,6 +5,13 @@
  */
 package control;
 
+<<<<<<< HEAD
+=======
+import java.util.LinkedList;
+import modelo.detalle_Servicio;
+import modelo.empleado;
+
+>>>>>>> parent of 930e45e... Revert "Merge branch 'master' of https://github.com/DiegoGrajales1229/smartCleaningControl"
 /**
  *
  * @author Diego Alejandro
