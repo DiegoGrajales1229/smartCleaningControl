@@ -73,6 +73,40 @@ public class detalle_Servicio {
     public String toString() {
         return "detalle_Servicio{" + "idServicioD=" + idServicioD + ", fechaInicioServicio=" + fechaInicioServicio + ", fechaVenceServicio=" + fechaVenceServicio + ", nitUnidadf=" + nitUnidadf + '}';
     }
+<<<<<<< HEAD
+=======
+
+    public LinkedList<detalle_Servicio> consultarUnicamenteRangoFechas(String sql) {
+        LinkedList<detalle_Servicio> lds = new LinkedList<>();
+        BaseDatos objb = new BaseDatos();
+       
+        String fecha1 = "";
+        String fecha2="";
+        String nit="";
+       
+        ResultSet rs = null;
+        if (objb.crearConexion()) {
+            try {
+                rs = objb.getSt().executeQuery(sql);
+                while (rs.next()) {
+                    
+                    fecha1 = rs.getString("fechaInicioServicio");
+                    fecha2 = rs.getString("fechaVenceServicio");
+                    nit = rs.getString("nitUnidadf");
+                   
+                    lds.add(new detalle_Servicio(fecha1, fecha2, nit));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(administrador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return lds;
+    }
+    
+      public boolean sqlDetalleServicio(String sql) {
+        boolean t=false;
+        BaseDatos objCon = new BaseDatos();
+>>>>>>> parent of 930e45e... Revert "Merge branch 'master' of https://github.com/DiegoGrajales1229/smartCleaningControl"
 
     public LinkedList<detalle_Servicio> consultarUnicamenteRangoFechas(String sql) {
         LinkedList<detalle_Servicio> lds = new LinkedList<>();
