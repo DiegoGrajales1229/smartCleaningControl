@@ -5,6 +5,17 @@
  */
 package vista.crudUnidadDeProducto;
 
+import control.ControlDetalle_Servicio;
+import control.ControlProducto_Unidad;
+import control.ControlProducto_aseo;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.LinkedList;
+import modelo.detalle_Servicio;
+import modelo.producto_unidad;
+import modelo.producto_unidadADV;
+import modelo.productos_aseo;
+
 /**
  *
  * @author Juan Diego Tabares
@@ -14,8 +25,18 @@ public class vistaModificarUnidadDeProducto extends javax.swing.JFrame {
     /**
      * Creates new form vistaModificarUnidadDeProducto
      */
+    LinkedList<productos_aseo> listaPA;
+    LinkedList<detalle_Servicio> listaDS;
+    LinkedList<producto_unidad> listaPu;
     public vistaModificarUnidadDeProducto() {
         initComponents();
+         listaPA= new LinkedList<>();
+          listaDS= new LinkedList<>();
+          listaPu= new LinkedList<>();
+          update.setVisible(false);
+          
+          
+        
     }
 
     /**
@@ -27,21 +48,188 @@ public class vistaModificarUnidadDeProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        comboUnits = new javax.swing.JComboBox<>();
+        comboProducto = new javax.swing.JComboBox<>();
+        comboDetalle = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        update = new javax.swing.JButton();
+        buscar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        jLabel1.setText("Unidad de producto  solo Bodega");
+
+        jLabel2.setText("Producto aseo");
+
+        jLabel3.setText("Detalle_servicio");
+
+        update.setText("Update");
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
+
+        buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))))
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboUnits, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(177, 177, 177)
+                        .addComponent(update)))
+                .addContainerGap(96, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(buscar)
+                .addGap(152, 152, 152))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboUnits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(28, 28, 28)
+                .addComponent(buscar)
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(comboProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(update)
+                .addGap(28, 28, 28))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        ControlProducto_aseo controlp = new ControlProducto_aseo();
+
+        listaPA= controlp.consultarProducto();
+
+        for (int i = 0; i < listaPA.size(); i++) {
+            productos_aseo objetop = listaPA.get(i);
+            String item = String.valueOf(objetop.getIdProductoAseo());
+            System.out.println(item);
+           comboProducto.addItem(item+" - "+objetop.getNombreProductoAseo());
+        }
+        
+        
+        
+         ControlDetalle_Servicio objCDS = new ControlDetalle_Servicio();
+
+        listaDS = objCDS.consultarDetalleServicio();
+
+        for (int i = 0; i < listaDS.size(); i++) {
+            detalle_Servicio objetoDetalle = listaDS.get(i);
+            comboDetalle.addItem(objetoDetalle.getNitUnidadf()+" , "+objetoDetalle.getFechaInicioServicio() +" - "+ objetoDetalle.getFechaVenceServicio());
+        }
+        
+        
+        
+        ControlProducto_Unidad controlPU = new ControlProducto_Unidad(); 
+        
+        listaPu=controlPU.consultarProductoUnidadBodega();
+        
+        for (int i = 0; i < listaPu.size(); i++) {
+        producto_unidad obj=listaPu.get(i);
+        String name="";
+         for (int j = 0; j< listaPA.size(); j++) {
+             productos_aseo objetop = listaPA.get(j);
+                     if(objetop.getIdProductoAseo()==obj.getIdProductoAseof()){
+                     name=objetop.getNombreProductoAseo();
+                     
+                     }
+        
+            }
+       comboUnits.addItem(obj.getIdProductoU()+" - "+ name);  
+            System.out.println(obj.getIdProductoU()+" - "+ name);
+        }
+        
+          comboUnits.addActionListener (new ActionListener () {
+    public void actionPerformed(ActionEvent e) {
+        update.setVisible(true);
+    }
+});
+        
+        
+    }//GEN-LAST:event_formWindowOpened
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_buscarActionPerformed
+
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        // TODO add your handling code here:
+         String[] item = String.valueOf(comboDetalle.getSelectedItem()).split(" - ");
+         int idDetalle=Integer.parseInt(item[0]);
+         String[] item2 = String.valueOf(comboUnits.getSelectedItem()).split(" - ");
+         int idUnit=Integer.parseInt(item2[0]);
+         
+         ControlProducto_Unidad control=new  ControlProducto_Unidad ();
+         producto_unidad objpu =new producto_unidad();
+         objpu.setIdProductoU(idUnit);
+         objpu.setIdServicioDf(idDetalle);
+         control.updateTipoProducto(objpu);
+         update.setVisible(false);
+    }//GEN-LAST:event_updateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +267,14 @@ public class vistaModificarUnidadDeProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscar;
+    private javax.swing.JComboBox<String> comboDetalle;
+    private javax.swing.JComboBox<String> comboProducto;
+    private javax.swing.JComboBox<String> comboUnits;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }

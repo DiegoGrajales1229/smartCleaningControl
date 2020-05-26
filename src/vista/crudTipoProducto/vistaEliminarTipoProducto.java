@@ -28,17 +28,7 @@ public class vistaEliminarTipoProducto extends javax.swing.JFrame {
         
         lista=new LinkedList<>();
         
-        controlTipoProducto objtp = new controlTipoProducto();
-
-        lista= objtp.consultarTipoProducto();
-
-        for (int i = 0; i < lista.size(); i++) {
-            tipo_producto_aseo objetotp = lista.get(i);
-            String item = String.valueOf(objetotp.getIdTipoProducto());
-            System.out.println(item);
-           combo.addItem(item+" - "+objetotp.getTipoProductoAseo());
-           
-    }
+        
     }
 
     /**
@@ -57,6 +47,11 @@ public class vistaEliminarTipoProducto extends javax.swing.JFrame {
         combo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Eliminar tipo de producto");
@@ -154,6 +149,30 @@ public class vistaEliminarTipoProducto extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_eliminarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        controlTipoProducto objtp = new controlTipoProducto();
+
+        lista= objtp.consultarTipoProductoLibres();
+
+        for (int i = 0; i < lista.size(); i++) {
+            tipo_producto_aseo objetotp = lista.get(i);
+            String item = String.valueOf(objetotp.getIdTipoProducto());
+            System.out.println(item);
+           combo.addItem(item+" - "+objetotp.getTipoProductoAseo());
+           
+    }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

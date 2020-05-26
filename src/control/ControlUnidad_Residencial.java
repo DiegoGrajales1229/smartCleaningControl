@@ -28,8 +28,8 @@ public class ControlUnidad_Residencial {
       public LinkedList<unidad_residencial> consultarUnidadResidencialLibre() {
         LinkedList<unidad_residencial> lista = new LinkedList<>();
        unidad_residencial obj = new unidad_residencial();
-        String sql = "select * from unidades_residenciales ur"
-                + "LEFT JOIN detalles_servicios ds ON ur.nitUnidad=ds.nitUnidadf WHERE ds.idServicioD=null ;";
+        String sql = "SELECT  ur.nitUnidad, ur.nombreUnidadResidencial, ur.fechaContratoUnidad, ur.direccionUnidad, ur.idAminf FROM unidades_residenciales ur"
+                + "LEFT JOIN detalles_servicios ds ON ur.nitUnidad=ds.nitUnidadf WHERE ds.idServicioD is null ;";
         
         lista = obj.consultarUnidadR(sql);
         return lista;

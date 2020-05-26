@@ -34,6 +34,19 @@ public class ControlProducto_aseo {
     
     
     
+     public boolean editarProductoAseo(productos_aseo pa) {
+        boolean t=false;
+       
+            String sql="UPDATE  productos_aseo SET nombreProductoAseo='"+ pa.getNombreProductoAseo()+"', precioProductoAseo=" + pa.getPrecioProductoAseo()+""
+                    + ", fechaDeCompraPA='"+pa.getFechaDeCompra()  +"', idTipoProductof="+ pa.getIdTipoProductof() +" WHERE idProductoAseo="+pa.getIdProductoAseo()+";";
+
+            t=pa.sqlProductoAseo(sql);
+                 return t;
+
+    }
+    
+    
+    
      public LinkedList<productos_aseo> consultarProducto() {
         LinkedList<productos_aseo> lista = new LinkedList<>();
         productos_aseo obj = new productos_aseo();
@@ -41,6 +54,17 @@ public class ControlProducto_aseo {
         lista = obj.consultarProducto(sql);
         return lista;
     }
+     
+      public LinkedList<productos_aseo> consultarProductoLibre() {
+        LinkedList<productos_aseo> lista = new LinkedList<>();
+        productos_aseo obj = new productos_aseo();
+        String sql = "SELECT pa.idProductoAseo, pa.nombreProductoAseo, pa.precioProductoAseo, pa.fechaDeCompraPA, pa.idTipoProductof "
+                + "FROM smartcleaningcontrol.productos_aseo pa LEFT JOIN producto_unidad pu " +
+                 "ON pa.idProductoAseo=pu.idProductoAseof WHERE pu.idProductoU IS NULL;";
+        lista = obj.consultarProducto(sql);
+        return lista;
+    }
+     
 
     public boolean deleteProducto(int id) {
         boolean t=false;

@@ -5,6 +5,13 @@
  */
 package vista.crudProducto;
 
+import control.ControlProducto_aseo;
+import control.controlTipoProducto;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import modelo.productos_aseo;
+import modelo.tipo_producto_aseo;
+
 /**
  *
  * @author Juan Diego Tabares
@@ -14,8 +21,16 @@ public class vistaModificarProducto extends javax.swing.JFrame {
     /**
      * Creates new form vistaModificarProducto
      */
+      LinkedList <productos_aseo> listaProducto ;
+     LinkedList <tipo_producto_aseo> lista ;
+     LinkedList<productos_aseo> listaPA;
     public vistaModificarProducto() {
         initComponents();
+        
+        lista=new LinkedList<>();
+        listaProducto=new LinkedList<>();
+        listaPA= new LinkedList<>();
+        update.setVisible(false);
     }
 
     /**
@@ -27,21 +42,256 @@ public class vistaModificarProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        combo = new javax.swing.JComboBox<>();
+        nombreTx = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        precioTx = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        fechaTx = new javax.swing.JTextField();
+        update = new javax.swing.JButton();
+        numero = new javax.swing.JLabel();
+        comboProducto = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        buscar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Vista Modificar Productos");
+
+        jLabel2.setText("Tipo Producto");
+
+        jLabel3.setText("Nombre");
+
+        jLabel4.setText("Precio");
+
+        precioTx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                precioTxActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Fecha de compra");
+
+        update.setText("Update");
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
+
+        numero.setText("0");
+
+        jLabel6.setText("productos");
+
+        buscar.setText("buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(75, 75, 75))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(58, 58, 58))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel4))))
+                                .addGap(69, 69, 69)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(update)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(fechaTx, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(nombreTx)
+                                    .addComponent(combo, 0, 93, Short.MAX_VALUE)))
+                            .addComponent(precioTx, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGap(139, 139, 139)
+                            .addComponent(jLabel1))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(buscar))
+                                .addComponent(comboProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(97, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addGap(56, 56, 56)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buscar)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(combo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombreTx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(precioTx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fechaTx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addComponent(update))
+                    .addComponent(numero, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(97, 97, 97))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void precioTxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioTxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_precioTxActionPerformed
+
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        // TODO add your handling code here:
+        
+        String nombreP= nombreTx.getText();
+        double precioP= Double.parseDouble (precioTx.getText());
+        String fechaP = fechaTx.getText();
+
+        String idTp= String.valueOf(combo.getSelectedItem());
+        String[] splt= idTp.split(" - ");
+
+        int idTipoP= Integer.parseInt(splt[0]);
+        System.out.println("será? : "+idTipoP);
+        
+        
+        
+         String idPa= String.valueOf(comboProducto.getSelectedItem());
+        String[] spltPa= idPa.split(" - ");
+
+        int idPaseo= Integer.parseInt(spltPa[0]);
+       
+
+        productos_aseo producto = new productos_aseo(idPaseo, nombreP, precioP, fechaP, idTipoP);
+
+       
+         ControlProducto_aseo control=new ControlProducto_aseo();
+        boolean rs =control.editarProductoAseo(producto);
+        if(rs){
+            JOptionPane.showMessageDialog(rootPane, "Updated succesfully");
+            listaProducto.clear();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Failed Updating");
+        }
+
+        //reset
+        
+
+        //numero ++
+
+       update.setVisible(false);
+
+    }//GEN-LAST:event_updateActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        
+        ControlProducto_aseo controlp = new ControlProducto_aseo();
+
+        listaPA= controlp.consultarProducto();
+
+        for (int i = 0; i < listaPA.size(); i++) {
+            productos_aseo objetop = listaPA.get(i);
+            String item = String.valueOf(objetop.getIdProductoAseo());
+            System.out.println(item);
+           comboProducto.addItem(item+" - "+objetop.getNombreProductoAseo());
+        }
+        
+        lista=new LinkedList<>();
+        listaProducto=new LinkedList<>();
+        
+        controlTipoProducto objtp = new controlTipoProducto();
+
+        lista= objtp.consultarTipoProducto();
+
+        for (int i = 0; i < lista.size(); i++) {
+            tipo_producto_aseo objetotp = lista.get(i);
+            String item = String.valueOf(objetotp.getIdTipoProducto());
+            System.out.println(item);
+           combo.addItem(item+" - "+objetotp.getTipoProductoAseo());
+        }
+        
+    }//GEN-LAST:event_formWindowOpened
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        // TODO add your handling code here:
+        
+        int index=comboProducto.getSelectedIndex();
+        productos_aseo obj=listaPA.get(index);
+        
+        nombreTx.setText(obj.getNombreProductoAseo());
+        
+        precioTx.setText(String.valueOf(obj.getPrecioProductoAseo()));
+        fechaTx.setText(obj.getFechaDeCompra());
+        
+        update.setVisible(true);
+    }//GEN-LAST:event_buscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +329,20 @@ public class vistaModificarProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscar;
+    private javax.swing.JComboBox<String> combo;
+    private javax.swing.JComboBox<String> comboProducto;
+    private javax.swing.JTextField fechaTx;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField nombreTx;
+    private javax.swing.JLabel numero;
+    private javax.swing.JTextField precioTx;
+    private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }

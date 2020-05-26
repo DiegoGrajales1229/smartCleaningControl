@@ -41,44 +41,55 @@ public class ControlProducto_Unidad {
         producto_unidad obj = new producto_unidad();
         String sql = "select * from producto_unidad;";
         
-        String sql2="SELECT producto_unidad.idProductoU, productos_aseo.nombreProductoAseo npa, producto_unidad.idServicioDf untService,\n" +
-
-" unidades_residenciales.nombreUnidadResidencial nur, producto_unidad.fechaUnidadProducto FROM (producto_unidad \n" +
-
-" unidades_residenciales.nombreUnidadResidencial nur, producto_unidad.fechaUnidadProducto fecha FROM (producto_unidad \n" +
-
-" LEFT JOIN unidades_residenciales ur ON untService= ur.nitUnidad)\n" +
-" LEFT JOIN productos_aseo pa ON pa.idProductoAseo= producto_unidad.idProductoAseof\n" +
-" ORDER BY  idServicioDf, fechaUnidadProducto;";
                 
         lista = obj.consultarProductoUnidad(sql);
         return lista;
     }
      
+     public LinkedList<producto_unidad> consultarProductoUnidadBodega() {
+        LinkedList<producto_unidad> lista = new LinkedList<>();
+        producto_unidad obj = new producto_unidad();
+        String sql = "select * from producto_unidad PU WHERE PU.idServicioDf is null  or PU.idServicioDf=2;";
+        
+                
+        lista = obj.consultarProductoUnidad(sql);
+        return lista;
+    }
      
       public LinkedList<producto_unidadADV> consultarProductoUnidadAdv() {
      LinkedList<producto_unidadADV> lista = new LinkedList<>();
         producto_unidad obj = new producto_unidad();
         
      
-        String sql2="SELECT producto_unidad.idProductoU, productos_aseo.nombreProductoAseo npa, producto_unidad.idServicioDf untService,\n" +
-
-" unidades_residenciales.nombreUnidadResidencial nur, producto_unidad.fechaUnidadProducto FROM (producto_unidad \n" +
-
-" unidades_residenciales.nombreUnidadResidencial nur, producto_unidad.fechaUnidadProducto fecha FROM (producto_unidad \n" +
-
-" LEFT JOIN unidades_residenciales ur ON untService= ur.nitUnidad)\n" +
-" LEFT JOIN productos_aseo pa ON pa.idProductoAseo= producto_unidad.idProductoAseof\n" +
-" ORDER BY   YEAR (fechaUnidadProducto) DESC, MONTH(fechaUnidadProducto) DESC, DAY(fechaUnidadProducto) DESC   GROUP BY idServicioDf;";
+        String sql2="SELECT pu.idProductoU , pa.nombreProductoAseo npa, \n" +
+"pu.idServicioDf untService, ur.nombreUnidadResidencial nur,\n" +
+" pu.fechaUnidadProducto fecha FROM smartcleaningcontrol.producto_unidad pu\n" +
+" LEFT JOIN detalles_servicios ds ON pu.idServicioDf= ds.idServicioD\n" +
+" LEFT JOIN unidades_residenciales ur ON ds.nitUnidadf= ur.nitUnidad  \n" +
+" LEFT JOIN productos_aseo pa ON pa.idProductoAseo= pu.idProductoAseof\n" +
+" ORDER BY   YEAR (fechaUnidadProducto) DESC, MONTH(fechaUnidadProducto) DESC, DAY(fechaUnidadProducto) DESC;";
                 
         lista = obj.consultarProductoUnidadADV(sql2);
         return lista;
       }
+      
+      
+      
+      
 
     public boolean deleteProductoUnidad(int id) {
         boolean t=false;
         producto_unidad obj2 = new producto_unidad();
         String sql="delete  fromproducto_unidad where idProductoU= "+id+";";
+        t=obj2.sqlProductoUnidad(sql);
+        return t;
+    }
+    
+    
+    public boolean updateTipoProducto(producto_unidad tpa) {
+        boolean t=false;
+        producto_unidad obj2 = new producto_unidad();
+        String sql="UPDATE producto_unidad SET  idServicioDf="+ tpa.getIdServicioDf() +"  WHERE idProductoU="+tpa.getIdProductoU();
         t=obj2.sqlProductoUnidad(sql);
         return t;
     }

@@ -114,7 +114,7 @@ public class producto_unidad {
             try {
                 rs = objb.getSt().executeQuery(sql);
                 while (rs.next()) {
-                    id = rs.getInt("idProductoAseo");
+                    id = rs.getInt("idProductoU");
                      idPA = rs.getInt("idProductoAseof");
                      idDS = rs.getInt("idServicioDf");
                     
@@ -148,7 +148,7 @@ public class producto_unidad {
                 while (rs.next()) {
                     
                     
-                    id = rs.getInt("idProductoAseo");
+                    id = rs.getInt("idProductoU");
                     nombrePA= rs.getString("npa");
                     
                     
