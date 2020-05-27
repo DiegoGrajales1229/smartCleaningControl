@@ -46,4 +46,14 @@ public class ControlAdministrador {
         return t;
     }
 
+    public boolean editarAdministrador(administrador objA) {
+         boolean t=false;
+       
+            String sql="UPDATE  administradores SET nombre1Admin='"+ objA.getNombre1Admin()+"', nombre2Admin='" + objA.getNombre2Admin()+"' "
+                    + ", apellido1Admin='"+objA.getApellido1Admin()  +"', apellido2Admin='"+ objA.getApellido2Admin()+"'"+", correoAdmin='"+objA.getCorreoAdmin()+"'" +" WHERE idAdmin="+objA.getIdAdmin()+";";
+
+            t=objA.SQL(sql);
+                 return t;
+    }
+
 }

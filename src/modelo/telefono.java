@@ -43,6 +43,12 @@ public class telefono {
     public telefono(int idTelefono) {
         this.idTelefono = idTelefono;
     }
+
+    public telefono(int idTelefono, String telefono) {
+        this.idTelefono = idTelefono;
+        this.telefono = telefono;
+    }
+    
     
     
     
@@ -110,6 +116,32 @@ public class telefono {
                     telefono = rs.getString("telefono");
                    
                     lt.add(new telefono(telefono));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(administrador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return lt;
+    }
+
+    public LinkedList<telefono> consultarTelefonoCompleto(String sql) {
+         LinkedList<telefono> lt = new LinkedList<>();
+        BaseDatos objb = new BaseDatos();
+       
+        int idTelefono=0 ;
+        String telefono = "";
+        String idEmpleadof="" ;
+       
+        ResultSet rs = null;
+        if (objb.crearConexion()) {
+            try {
+                rs = objb.getSt().executeQuery(sql);
+                while (rs.next()) {
+                    idTelefono = rs.getInt("idTelefono");
+                    telefono = rs.getString("telefono");
+                    idEmpleadof = rs.getString("idEmpleadof");
+                   
+                    lt.add(new telefono(idTelefono, telefono, idEmpleadof));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(administrador.class.getName()).log(Level.SEVERE, null, ex);

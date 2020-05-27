@@ -136,6 +136,7 @@ public class administrador {
         String nombre2 = "";
         String apellido1 = "";
         String apellido2 = "";
+        String correo = "";
         ResultSet rs = null;
         if (objb.crearConexion()) {
             try {
@@ -146,7 +147,10 @@ public class administrador {
                     nombre2 = rs.getString("nombre2Admin");
                     apellido1 = rs.getString("apellido1Admin");
                     apellido2 = rs.getString("apellido2Admin");
-                    la.add(new administrador(idAdmin, nombre1, nombre2, apellido1, apellido2));
+                    correo = rs.getString("correoAdmin");
+                    
+                    
+                    la.add(new administrador(idAdmin, nombre1, nombre2, apellido1, apellido2,correo));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(administrador.class.getName()).log(Level.SEVERE, null, ex);

@@ -56,7 +56,6 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
         tx5 = new javax.swing.JTextField();
         tx7 = new javax.swing.JTextField();
         tx8 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         comboBox = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
 
@@ -93,14 +92,6 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Salario mensual:");
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("hey");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         comboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "                    -Seleccione-" }));
@@ -162,9 +153,7 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
                             .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(247, 247, 247)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jButton2)))
                 .addContainerGap(160, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -208,9 +197,7 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
                 .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(40, 40, 40))
+                .addGap(83, 83, 83))
         );
 
         pack();
@@ -231,23 +218,6 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_formWindowOpened
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-//            ControlEmpleado objCE = new ControlEmpleado();
-//        boolean t=objCE.insertarEmpleados(listaEm);
-//        
-//        if(t==true){
-//            JOptionPane.showMessageDialog(rootPane, "Se insertaron los empleados");
-//            listaEm.clear();
-//            
-//        }else{
-//            JOptionPane.showMessageDialog(rootPane, "No se insertaron los empleados");
-//        }
-        
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         ControlEmpleado objCE = new ControlEmpleado();
@@ -312,7 +282,6 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboBox;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

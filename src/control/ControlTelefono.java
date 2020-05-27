@@ -44,5 +44,23 @@ public class ControlTelefono {
         t=obj2.SQL(sql);
         return t;
     }
+
+    public LinkedList<telefono> consultarTelefonoCompleto() {
+         LinkedList<telefono> listatf = new LinkedList<>();
+        telefono objte = new telefono();
+        String sql = "select * from telefonos;";
+        listatf = objte.consultarTelefonoCompleto(sql);
+        return listatf;
+    }
+    
+    public boolean editarTelefonos(telefono objT){
+        boolean t=false;
+       
+            String sql="UPDATE  telefonos SET telefono='"+ objT.getTelefono()+"'" +" WHERE idTelefono="+objT.getIdTelefono()+";";
+
+            t=objT.SQL(sql);
+                 return t;
+    }
+            
     
 }
