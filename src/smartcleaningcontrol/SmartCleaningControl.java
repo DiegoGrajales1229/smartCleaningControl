@@ -16,6 +16,7 @@ public class SmartCleaningControl {
     /**
      * @param args the command line arguments
      */
+   public static Menu menu;
     public static void main(String[] args) {
         BaseDatos objB=new BaseDatos();
         boolean t=objB.crearConexion();
@@ -24,6 +25,9 @@ public class SmartCleaningControl {
         }else{
             System.out.println("Conexion No exitosa");
         }
+        
+        menu= new Menu();
+        menu.setVisible(true);
     }
     
 }

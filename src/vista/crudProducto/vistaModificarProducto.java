@@ -235,7 +235,7 @@ public class vistaModificarProducto extends javax.swing.JFrame {
         boolean rs =control.editarProductoAseo(producto);
         if(rs){
             JOptionPane.showMessageDialog(rootPane, "Updated succesfully");
-//            listaProducto.clear();
+          
         }else{
             JOptionPane.showMessageDialog(rootPane, "Failed Updating");
         }

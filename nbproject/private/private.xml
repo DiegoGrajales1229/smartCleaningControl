@@ -3,15 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/vista/crudUnidadResidencial/vistaCrearUnidadResidencial.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/vista/crudProducto/vistaModificarProducto.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/modelo/unidad_residencial.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/vista/crudUnidadResidencial/vistaConsultarUnidadResidencial.java</file>
             <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/control/ControlUnidad_Residencial.java</file>
-            <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/vista/crudUnidadResidencial/vistaEditarUndadResisdencial.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/vista/crudUnidadDeProducto/vistaConsultarProductoEn.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/vista/crudUnidadDeProducto/vistaEliminarUnidadDeProducto.java</file>
             <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/vista/crudUnidadResidencial/vistaEliminarUnidadResidencial.java</file>
-            <file>file:/C:/Users/Diego%20Alejandro/Documents/GitHub/SmartCleaningControlBuneo/smartCleaningControl/src/control/ControlProducto_aseo.java</file>
-            <file>file:/C:/Users/Diego%20Alejandro/Documents/GitHub/SmartCleaningControlBuneo/smartCleaningControl/src/vista/CrudAdministrador/vistaConsultar.java</file>
-            <file>file:/C:/Users/Diego%20Alejandro/Documents/GitHub/SmartCleaningControlBuneo/smartCleaningControl/src/vista/CrudAdministrador/vistaUpdateAdminastrador.java</file>
-            <file>file:/C:/Users/Diego%20Alejandro/Documents/GitHub/SmartCleaningControlBuneo/smartCleaningControl/src/vista/crudProducto/vistaModificarProducto.java</file>
-            <file>file:/C:/Users/Diego%20Alejandro/Documents/GitHub/SmartCleaningControlBuneo/smartCleaningControl/src/control/ControlAdministrador.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/control/ControlProducto_aseo.java</file>
         </group>
     </open-files>
 </project-private>

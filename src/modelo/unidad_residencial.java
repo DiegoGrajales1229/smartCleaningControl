@@ -113,7 +113,7 @@ public class unidad_residencial {
                     nombre = rs.getString("nombreUnidadResidencial");
                     fecha= rs.getString("fechaContratoUnidad");
                      direccion = rs.getString("direccionUnidad");
-                     idAdmi= rs.getInt("idAminf");
+                     idAdmi= rs.getInt("idAdminf");
                    
                     listaUR.add(new unidad_residencial(nit, nombre, fecha,direccion,idAdmi));
                 }

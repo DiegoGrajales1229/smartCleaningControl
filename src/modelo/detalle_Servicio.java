@@ -8,6 +8,7 @@ package modelo;
 import control.BaseDatos;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -111,8 +112,54 @@ public class detalle_Servicio {
         }
         return lds;
     }
-}
 
+
+  public boolean sqlDetalleServicio(String sql) {
+        boolean t=false;
+        BaseDatos objCon = new BaseDatos();
+
+        if (objCon.crearConexion()) {
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                t=true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t= false;
+            }
+        }
+        
+        return t;
+}
+  
+   public LinkedList<detalle_Servicio> consultarDetalleServicio(String sql) {
+        LinkedList<detalle_Servicio> listaDS= new LinkedList<>();
+        BaseDatos objb = new BaseDatos();
+       
+        
+        ResultSet rs = null;
+        if (objb.crearConexion()) {
+            try {
+                rs = objb.getSt().executeQuery(sql);
+                while (rs.next()) {
+                    detalle_Servicio objD=new detalle_Servicio();
+                    objD.setIdServicioD(rs.getInt("idServicioD"));
+                    objD.setFechaInicioServicio(rs.getString("fechaInicioServicio"));
+                    objD.setFechaVenceServicio(rs.getString("fechaVenceServicio"));
+                    objD.setNitUnidadf(rs.getString("nitUnidadf"));
+                    listaDS.add(objD);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(detalle_Servicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return listaDS;
+
+    }
+  
+  
+  
+}
 /*
 
     public LinkedList<detalle_Servicio> consultarUnicamenteRangoFechas(String sql) {
