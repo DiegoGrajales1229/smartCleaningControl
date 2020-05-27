@@ -109,7 +109,7 @@ public class unidad_residencial {
             try {
                 rs = objb.getSt().executeQuery(sql);
                 while (rs.next()) {
-                    nit = rs.getString(" nitUnidad");
+                    nit = rs.getString("nitUnidad");
                     nombre = rs.getString("nombreUnidadResidencial");
                     fecha= rs.getString("fechaContratoUnidad");
                      direccion = rs.getString("direccionUnidad");

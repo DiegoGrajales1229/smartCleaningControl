@@ -28,8 +28,8 @@ public class ControlUnidad_Residencial {
       public LinkedList<unidad_residencial> consultarUnidadResidencialLibre() {
         LinkedList<unidad_residencial> lista = new LinkedList<>();
        unidad_residencial obj = new unidad_residencial();
-        String sql = "SELECT  ur.nitUnidad, ur.nombreUnidadResidencial, ur.fechaContratoUnidad, ur.direccionUnidad, ur.idAminf FROM unidades_residenciales ur"
-                + "LEFT JOIN detalles_servicios ds ON ur.nitUnidad=ds.nitUnidadf WHERE ds.idServicioD is null ;";
+        String sql = "SELECT  ur.nitUnidad, ur.nombreUnidadResidencial, ur.fechaContratoUnidad, ur.direccionUnidad, ur.idAdminf FROM unidades_residenciales ur\n" +
+"LEFT JOIN detalles_servicios ds ON ur.nitUnidad=ds.nitUnidadf WHERE ds.idServicioD is null ;";
         
         lista = obj.consultarUnidadR(sql);
         return lista;
@@ -59,5 +59,21 @@ public class ControlUnidad_Residencial {
         String sql="delete  from unidades_residenciales where nitUnidad= '"+nit+"';";
         t=obj2.sqlProductoAseo(sql);
         return t;
+    }
+       
+       
+       public boolean editarUnidadResidencial(unidad_residencial ur) {
+        boolean t=false;
+       
+        
+            String sql="UPDATE unidades_residenciales SET (nitUnidad='"+ur.getNitUnidad()+"',nombreUnidadResidencial='"+ur.getNombreUnidadResidencial()+"'"
+                    + ",fechaContratoUnidad='"+ur.getFechaContratoUnidad()+"',direccionUnidad='"+ur.getDireccionUnidad()+"',idAdminf="+ur.getIdAdminf()+") "
+                    + "WHERE nitUnidad=  '"+ur.getNitUnidad()+"';";              
+            
+            t=ur.sqlUnidadResidencial(sql);
+        
+  
+        return t;
+        
     }
 }
