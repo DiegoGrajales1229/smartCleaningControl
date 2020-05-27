@@ -3,26 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.CrudAdministrador;
+package vista.CrudTelefono;
 
-import control.ControlAdministrador;
+import control.ControlTelefono;
 import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
-import modelo.administrador;
+import modelo.telefono;
 
 /**
  *
  * @author Diego Alejandro
  */
-public class vistaConsultar extends javax.swing.JFrame {
+public class vistaConsultarTelefono extends javax.swing.JFrame {
 
     /**
-     * Creates new form vistaConsultar
+     * Creates new form vistaConsultarTelefono
      */
-    LinkedList<administrador> listaA;
-    public vistaConsultar() {
+    LinkedList<telefono> listaT;
+    public vistaConsultarTelefono() {
         initComponents();
-        listaA = new LinkedList<>();
+        listaT = new LinkedList<>();
     }
 
     /**
@@ -41,9 +41,10 @@ public class vistaConsultar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Consultar Administradores");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setText("Consultar Telefonos ");
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Consultar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,13 +54,13 @@ public class vistaConsultar extends javax.swing.JFrame {
 
         jtable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "Identificacion", "Primer Nombre", "Segundo Nombre", "Primer Apellido", "Segundo Apellido", "Correo"
+                "Telefonos"
             }
         ));
         jScrollPane1.setViewportView(jtable1);
@@ -71,62 +72,57 @@ public class vistaConsultar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE))
+                        .addGap(23, 23, 23)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(351, 351, 351)
-                        .addComponent(jButton1))
+                        .addGap(171, 171, 171)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(jLabel1)))
-                .addGap(19, 19, 19))
+                        .addGap(303, 303, 303)
+                        .addComponent(jButton1)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
+                .addGap(64, 64, 64)
                 .addComponent(jLabel1)
-                .addGap(54, 54, 54)
+                .addGap(44, 44, 44)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addGap(42, 42, 42)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     int nCol;
+        
+        int nCol;
      Object[] fila;
      
-        ControlAdministrador objC = new ControlAdministrador();
-        listaA = objC.consultarAdministradores();
+        ControlTelefono objC = new ControlTelefono();
+        listaT = objC.consultarSoloTelefonos();
         DefaultTableModel modelo = new DefaultTableModel();
             this.jtable1.setModel(modelo);
         
-             modelo.addColumn("identificacion");
-            modelo.addColumn("Primer Nombre");
-            modelo.addColumn("Segundo Nombre");
-            modelo.addColumn("Primer Apellido");
-            modelo.addColumn("Segundo apellido");
-            modelo.addColumn("Correo");
+             modelo.addColumn("Telefonos");
+            
             nCol = modelo.getColumnCount();
             
-             for (int i = 0; i < listaA.size(); i++) {
+             for (int i = 0; i < listaT.size(); i++) {
                 fila = new Object[nCol];
-                fila[0] = listaA.get(i).getIdAdmin();
-                fila[1] = listaA.get(i).getNombre1Admin();
-                fila[2] = listaA.get(i).getNombre2Admin();
-                fila[3] = listaA.get(i).getApellido1Admin();
-                fila[4] = listaA.get(i).getApellido2Admin();
-                fila[5] = listaA.get(i).getCorreoAdmin();
+                fila[0] = listaT.get(i).getTelefono();
+                
                
                 modelo.addRow(fila);
             }
-            
-            
-            
+        
+        
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -146,20 +142,20 @@ public class vistaConsultar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(vistaConsultar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaConsultarTelefono.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(vistaConsultar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaConsultarTelefono.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(vistaConsultar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaConsultarTelefono.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(vistaConsultar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaConsultarTelefono.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vistaConsultar().setVisible(true);
+                new vistaConsultarTelefono().setVisible(true);
             }
         });
     }

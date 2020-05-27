@@ -26,5 +26,33 @@ public class ControlTipoMaquina {
         
         return t;
     }
+
+    public boolean deleteTipoMaquina(tipo_maquina_aseo objTipoMaquina) {
+        boolean t=false;
+        tipo_maquina_aseo obj2 = new tipo_maquina_aseo();
+        String sql="delete from tipos_de_maquina_aseo where idTipoMaquina= " + objTipoMaquina.getIdTipoMaquina()+"";
+        t=obj2.SQL(sql);
+        return t;
+    }
+
+    public LinkedList<tipo_maquina_aseo> consultarMaquinas() {
+        LinkedList<tipo_maquina_aseo> listaa = new LinkedList<>();
+        tipo_maquina_aseo objtm = new tipo_maquina_aseo();
+        String sql = "select * from tipos_de_maquina_aseo;";
+        listaa = objtm.consultarTipoMaquinas(sql);
+        return listaa;
+    }
+
+    public boolean editarTipoMaquinas(tipo_maquina_aseo objT) {
+        
+        boolean t=false;
+       
+            String sql="UPDATE  tipos_de_maquina_aseo SET tipoMaquinaAseo='"+ objT.getTipoMquinaAseo()+"'" +" WHERE idTipoMaquina="+objT.getIdTipoMaquina()+";";
+
+            t=objT.SQL(sql);
+                 return t;
+        
+        
+    }
     
 }

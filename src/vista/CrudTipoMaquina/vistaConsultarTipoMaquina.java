@@ -3,26 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.CrudAdministrador;
+package vista.CrudTipoMaquina;
 
-import control.ControlAdministrador;
+import control.ControlTipoMaquina;
 import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
-import modelo.administrador;
+import modelo.tipo_maquina_aseo;
 
 /**
  *
  * @author Diego Alejandro
  */
-public class vistaConsultar extends javax.swing.JFrame {
+public class vistaConsultarTipoMaquina extends javax.swing.JFrame {
 
     /**
-     * Creates new form vistaConsultar
+     * Creates new form vistaConsultarTipoMaquina
      */
-    LinkedList<administrador> listaA;
-    public vistaConsultar() {
+    LinkedList<tipo_maquina_aseo> listaM;
+    public vistaConsultarTipoMaquina() {
         initComponents();
-        listaA = new LinkedList<>();
+        listaM = new LinkedList<>();
     }
 
     /**
@@ -34,15 +34,12 @@ public class vistaConsultar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Consultar Administradores");
 
         jButton1.setText("Consultar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -53,42 +50,46 @@ public class vistaConsultar extends javax.swing.JFrame {
 
         jtable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Identificacion", "Primer Nombre", "Segundo Nombre", "Primer Apellido", "Segundo Apellido", "Correo"
+                "Identificacion", "Tipo de Maquina"
             }
         ));
         jScrollPane1.setViewportView(jtable1);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("Consultar Tipo de Maquinas de Aseo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+                .addGap(19, 19, 19))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE))
+                        .addGap(144, 144, 144)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(351, 351, 351)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(jLabel1)))
-                .addGap(19, 19, 19))
+                        .addGap(310, 310, 310)
+                        .addComponent(jButton1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
+                .addContainerGap(87, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(54, 54, 54)
+                .addGap(59, 59, 59)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
@@ -97,36 +98,28 @@ public class vistaConsultar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     int nCol;
-     Object[] fila;
-     
-        ControlAdministrador objC = new ControlAdministrador();
-        listaA = objC.consultarAdministradores();
+        int nCol;
+        Object[] fila;
+
+        ControlTipoMaquina objC = new ControlTipoMaquina();
+        listaM = objC.consultarMaquinas();
         DefaultTableModel modelo = new DefaultTableModel();
-            this.jtable1.setModel(modelo);
+        this.jtable1.setModel(modelo);
+
+        modelo.addColumn("identificacion");
+        modelo.addColumn("Tipo de Maquina");
         
-             modelo.addColumn("identificacion");
-            modelo.addColumn("Primer Nombre");
-            modelo.addColumn("Segundo Nombre");
-            modelo.addColumn("Primer Apellido");
-            modelo.addColumn("Segundo apellido");
-            modelo.addColumn("Correo");
-            nCol = modelo.getColumnCount();
-            
-             for (int i = 0; i < listaA.size(); i++) {
-                fila = new Object[nCol];
-                fila[0] = listaA.get(i).getIdAdmin();
-                fila[1] = listaA.get(i).getNombre1Admin();
-                fila[2] = listaA.get(i).getNombre2Admin();
-                fila[3] = listaA.get(i).getApellido1Admin();
-                fila[4] = listaA.get(i).getApellido2Admin();
-                fila[5] = listaA.get(i).getCorreoAdmin();
-               
-                modelo.addRow(fila);
-            }
-            
-            
-            
+        nCol = modelo.getColumnCount();
+
+        for (int i = 0; i < listaM.size(); i++) {
+            fila = new Object[nCol];
+            fila[0] = listaM.get(i).getIdTipoMaquina();
+            fila[1] = listaM.get(i).getTipoMquinaAseo();
+          
+
+            modelo.addRow(fila);
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -146,20 +139,20 @@ public class vistaConsultar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(vistaConsultar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaConsultarTipoMaquina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(vistaConsultar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaConsultarTipoMaquina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(vistaConsultar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaConsultarTipoMaquina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(vistaConsultar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaConsultarTipoMaquina.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vistaConsultar().setVisible(true);
+                new vistaConsultarTipoMaquina().setVisible(true);
             }
         });
     }
