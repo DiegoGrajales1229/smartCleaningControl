@@ -80,7 +80,15 @@ public class ControlProducto_Unidad {
     public boolean deleteProductoUnidad(int id) {
         boolean t=false;
         producto_unidad obj2 = new producto_unidad();
-        String sql="delete  fromproducto_unidad where idProductoU= "+id+";";
+        String sql="delete  from producto_unidad where idProductoU= "+id+";";
+        t=obj2.sqlProductoUnidad(sql);
+        return t;
+    }
+    
+      public boolean deleteProductoUnidadRelacionado(int id) {
+        boolean t=false;
+        producto_unidad obj2 = new producto_unidad();
+        String sql="delete  from producto_unidad where idServicioDf = "+id+";";
         t=obj2.sqlProductoUnidad(sql);
         return t;
     }

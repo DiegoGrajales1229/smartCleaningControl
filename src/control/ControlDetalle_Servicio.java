@@ -27,12 +27,14 @@ public class ControlDetalle_Servicio {
     
     
     
+    
+    
     public boolean insertarDetalleServicio(LinkedList<detalle_Servicio> listaDS) {
         boolean t=false;
        
         for (int i = 0; i <listaDS.size(); i++) {
            detalle_Servicio objDS = listaDS.get(i);
-            String sql="insert into productos_aseo (fechaInicioServicio,fechaVenceServicio,nitUnidadf) "
+            String sql="insert into detalles_servicios (fechaInicioServicio,fechaVenceServicio,nitUnidadf) "
                     + "value('"+objDS.getFechaInicioServicio()+"', '"+objDS.getFechaVenceServicio()+"','"+objDS.getNitUnidadf()+"');";
             
             t=objDS.sqlDetalleServicio(sql);
@@ -47,4 +49,16 @@ public class ControlDetalle_Servicio {
         t=obj.sqlDetalleServicio(sql);
         return t;
     }
+     
+     public boolean updateDetalleServicio(detalle_Servicio objDS) {
+        boolean t=false;
+       
+           
+            String sql="UPDATE detalles_servicios  SET fechaInicioServicio='"+objDS.getFechaInicioServicio() +"', fechaVenceServicio='"+ objDS.getFechaVenceServicio()+"' "
+                    + "WHERE idServicioD="+objDS.getIdServicioD() +";"; 
+            t=objDS.sqlDetalleServicio(sql);
+        
+        return t;
+    }
+     
 }
