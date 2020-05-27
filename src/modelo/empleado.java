@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -65,6 +66,20 @@ public class empleado {
         this.apellido1Empleado = apellido1Empleado;
         this.apellido2Empleado = apellido2Empleado;
     }
+
+    public empleado(String idEmpleado, String nombre1Empleado, String nombre2Empleado, String apellido1Empleado, String apellido2Empleado, String correoEmpleado, String direccionEmpleado, int numeroContratoEmpleado, double salarioMensualEmpleado) {
+        this.idEmpleado = idEmpleado;
+        this.nombre1Empleado = nombre1Empleado;
+        this.nombre2Empleado = nombre2Empleado;
+        this.apellido1Empleado = apellido1Empleado;
+        this.apellido2Empleado = apellido2Empleado;
+        this.correoEmpleado = correoEmpleado;
+        this.direccionEmpleado = direccionEmpleado;
+        this.numeroContratoEmpleado = numeroContratoEmpleado;
+        this.salarioMensualEmpleado = salarioMensualEmpleado;
+    }
+    
+    
 
     
     
@@ -223,6 +238,69 @@ public class empleado {
         }
 
         return t;
+    }
+
+    public boolean SQL(String sql) {
+        
+        boolean t = false;
+        BaseDatos objCon = new BaseDatos();
+
+        if (objCon.crearConexion()) {
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                t = true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t = false;
+            }
+        }
+
+        return t;
+        
+        
+    }
+
+    public LinkedList<empleado> consultarEmpleados(String sql) {
+        LinkedList<empleado> le = new LinkedList<>();
+        BaseDatos objb = new BaseDatos();
+        String idEmpleado = "";
+        String nombre1 = "";
+        String nombre2 = "";
+        String apellido1 = "";
+        String apellido2 = "";
+        String imagen = "";
+        String correo = "";
+        String direccion = "";
+        int numeroContrato=0;
+        double salarioMensual = 0.0;
+        int idServiciof = 0;
+        ResultSet rs = null;
+        if (objb.crearConexion()) {
+            try {
+                rs = objb.getSt().executeQuery(sql);
+                while (rs.next()) {
+                    idEmpleado = rs.getString("idEmpleado");
+                    nombre1 = rs.getString("nombre1Empleado");
+                    nombre2 = rs.getString("nombre2Empleado");
+                    apellido1 = rs.getString("apellido1Empleado");
+                    apellido2 = rs.getString("apellido2Empleado");
+                    imagen = rs.getString("fotoEmpleado");
+                    correo = rs.getString("correoEmpleado");
+                    direccion = rs.getString("direccionEmpleado");
+                    numeroContrato = rs.getInt("numeroContratoEmpleado");
+                    salarioMensual = rs.getDouble("salarioMensualEmpleado");
+                    idServiciof = rs.getInt("idServicioDf");
+                    
+                    
+                    le.add(new empleado(idEmpleado, nombre1, nombre2, apellido1, apellido2, imagen, correo, direccion, numeroContrato, idServiciof, salarioMensual));
+                    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(administrador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return le;
     }
     
     
