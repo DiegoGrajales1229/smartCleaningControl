@@ -6,8 +6,12 @@
 package modelo;
 
 import control.BaseDatos;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -96,6 +100,34 @@ public class maquinas_de_aseo {
         }
         
         return t;
+    }
+
+    public LinkedList<maquinas_de_aseo> consultarMaquinas(String sql) {
+       LinkedList<maquinas_de_aseo> listaM = new LinkedList<>();
+        BaseDatos objb = new BaseDatos();
+        int id = 0;
+        String nombre = "";
+        String fechaL= "";
+        String fechaS="";
+        int idTp=0;
+        ResultSet rs = null;
+        if (objb.crearConexion()) {
+            try {
+                rs = objb.getSt().executeQuery(sql);
+                while (rs.next()) {
+                    id = rs.getInt("idMaquinaAseo");
+                    nombre = rs.getString("nombreMaquinaAseo");
+                    fechaL= rs.getString("fechaLlegada");
+                     fechaS = rs.getString("fechaSalida");
+                     idTp= rs.getInt("idTipoMaquinaf");
+                    
+                    listaM.add(new maquinas_de_aseo(id, idTp, nombre, fechaL, fechaS));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(productos_aseo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return listaM;
     }
     
     

@@ -36,8 +36,11 @@ public class ControlMaquinas_Aseo {
     public LinkedList<maquinas_de_aseo> consultarMaquinasAseo() {
         
         LinkedList<maquinas_de_aseo> ma = new LinkedList<>();
+     
+        maquinas_de_aseo obj = new maquinas_de_aseo();
+        String sql = "select * from maquinas_aseo;";
+        ma = obj.consultarMaquinas(sql);
         
-                
                return ma;
     }
     

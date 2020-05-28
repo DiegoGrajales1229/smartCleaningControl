@@ -15,7 +15,18 @@ import modelo.maquina_unidad;
 public class ControlMaquina_Unidad {
 
     public boolean insertarMaquinaUnidad(LinkedList<maquina_unidad> listaMU) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       boolean t=false;
+     
+        for (int i = 0; i <listaMU.size(); i++) {
+          maquina_unidad pu = listaMU.get(i);
+            String sql="insert into maquina_unidad ( idServicioDf, idMaquinaAseof) "
+                    + "values('"+ pu.getIdServicioDf()+"' , '" + pu.getIdMaquinaAseof()+"' );";
+            
+            t=pu.SQL(sql);
+        }
+        
+        
+        return t;
     }
     
 }

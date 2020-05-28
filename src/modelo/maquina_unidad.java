@@ -5,6 +5,10 @@
  */
 package modelo;
 
+import control.BaseDatos;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  *
  * @author Diego Alejandro
@@ -55,6 +59,24 @@ public class maquina_unidad {
     @Override
     public String toString() {
         return "maquina_unidad{" + "idMaquinaU=" + idMaquinaU + ", idServicioDf=" + idServicioDf + ", idMaquinaAseof=" + idMaquinaAseof + '}';
+    }
+
+    public boolean SQL(String sql) {
+         boolean t = false;
+        BaseDatos objCon = new BaseDatos();
+
+        if (objCon.crearConexion()) {
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                t = true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t = false;
+            }
+        }
+
+        return t;
     }
 
    
