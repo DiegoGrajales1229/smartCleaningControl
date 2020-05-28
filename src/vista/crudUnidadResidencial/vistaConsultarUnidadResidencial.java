@@ -171,7 +171,7 @@ public class vistaConsultarUnidadResidencial extends javax.swing.JFrame {
               fila = new Object[ncol];
              
            unidad_residencial objeto = listaU.get(i);
-            String[] item= new String[5] ;
+           
           
                fila[0] = objeto.getNitUnidad();
                 fila[1] =objeto.getNombreUnidadResidencial();
@@ -186,7 +186,7 @@ public class vistaConsultarUnidadResidencial extends javax.swing.JFrame {
                 
                 
                  modelo.addRow(fila);
-            System.out.println(item);
+           
           
         }
         

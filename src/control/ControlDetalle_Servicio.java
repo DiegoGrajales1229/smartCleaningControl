@@ -25,6 +25,13 @@ public class ControlDetalle_Servicio {
         return listads;
     }
     
+     public LinkedList<detalle_Servicio> consultarDetalleServicioX() {
+        LinkedList<detalle_Servicio> listads = new LinkedList<>();
+        detalle_Servicio objds = new detalle_Servicio();
+        String sql = "select * from detalles_servicios;";
+        listads = objds.consultarDetalleServicio(sql);
+        return listads;
+    }
     
     
     

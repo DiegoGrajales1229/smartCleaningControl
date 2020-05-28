@@ -9,6 +9,7 @@ import control.ControlDetalle_Servicio;
 import control.ControlProducto_Unidad;
 import control.ControlUnidad_Residencial;
 import java.util.LinkedList;
+import javax.swing.table.DefaultTableModel;
 import modelo.detalle_Servicio;
 import modelo.unidad_residencial;
 
@@ -16,14 +17,14 @@ import modelo.unidad_residencial;
  *
  * @author Juan Diego Tabares
  */
-public class updateDetalleServicio extends javax.swing.JFrame {
+public class consultarDetalleServicio extends javax.swing.JFrame {
 
     /**
      * Creates new form deleteDetalle_Servicio
      */
     LinkedList<unidad_residencial>listaUR;
     LinkedList<detalle_Servicio> listaDS;
-    public updateDetalleServicio() {
+    public consultarDetalleServicio() {
         initComponents();
         listaDS=new LinkedList<>();
         listaUR=new LinkedList<>();
@@ -41,11 +42,8 @@ public class updateDetalleServicio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         detalles = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        fecha1 = new javax.swing.JTextField();
-        fecha2 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        mitabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -56,38 +54,34 @@ public class updateDetalleServicio extends javax.swing.JFrame {
 
         jLabel1.setText("DetalleServicios");
 
-        jButton1.setText("Eliminar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        mitabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        });
-
-        jLabel2.setText("Fecha Inicio");
-
-        jLabel3.setText("Fecha Finaliza");
+        ));
+        jScrollPane1.setViewportView(mitabla);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(detalles, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(fecha2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                        .addComponent(fecha1, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addGap(44, 44, 44))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel1)
+                        .addGap(53, 53, 53)
+                        .addComponent(detalles, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,17 +90,8 @@ public class updateDetalleServicio extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(detalles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fecha2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(23, 23, 23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -116,14 +101,11 @@ public class updateDetalleServicio extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(51, 51, 51))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -136,33 +118,48 @@ public class updateDetalleServicio extends javax.swing.JFrame {
         ControlDetalle_Servicio controlds= new ControlDetalle_Servicio ();
         listaDS=controlds.consultarDetalleServicioX();
         
+         int ncol;
+        Object[] fila;
+       
+        
+        
+            DefaultTableModel modelo = new DefaultTableModel();
+            this.mitabla.setModel(modelo);
+
+            modelo.addColumn("Id DetalleServicio");
+            modelo.addColumn("Fecha Inicia");
+            modelo.addColumn("Fecha Vence");
+            modelo.addColumn("UnidadResidencial");
+            
+            
+            ncol = modelo.getColumnCount();
+        
+        
+        
         for(int i=0; i<listaDS.size();i++){
         detalle_Servicio obj = listaDS.get(i);
         String nombre="";
         String nit="";
+        
+         fila = new Object[ncol];
+          
+               fila[0] = obj.getIdServicioD();
+                fila[1] =obj.getFechaInicioServicio();
+                fila[2] =obj.getFechaVenceServicio();
+                
             for (int j = 0; j < listaUR.size(); j++) {
                 unidad_residencial obu = listaUR.get(j);
                 if(obu.getNitUnidad().equals(obj.getNitUnidadf()))
                 nombre=obu.getNombreUnidadResidencial();
                 nit=obu.getNitUnidad();
+                fila[3] = nombre;
             }
-            detalles.addItem(obj.getIdServicioD()+" - "+obj.getFechaInicioServicio()+" - "+nit+" - "+nombre);
-        
+           
+        modelo.addRow(fila);
         } 
         
         
     }//GEN-LAST:event_formWindowOpened
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String[] ids=detalles.getSelectedItem().toString().split(" - ");
-        int id=Integer.parseInt(ids[0]);
-        detalle_Servicio obj=new detalle_Servicio(id,fecha1.getText(),fecha2.getText(),"");
-        
-    
-        ControlDetalle_Servicio controlds=new ControlDetalle_Servicio();
-        controlds.updateDetalleServicio(obj);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,33 +178,32 @@ public class updateDetalleServicio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(updateDetalleServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(consultarDetalleServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(updateDetalleServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(consultarDetalleServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(updateDetalleServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(consultarDetalleServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(updateDetalleServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(consultarDetalleServicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new updateDetalleServicio().setVisible(true);
+                new consultarDetalleServicio().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> detalles;
-    private javax.swing.JTextField fecha1;
-    private javax.swing.JTextField fecha2;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable mitabla;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@
  */
 package smartcleaningcontrol;
 
+import vista.crudUnidadDeProducto.vistaConsultarProductoEn;
 import vista.crudUnidadResidencial.vistaConsultarUnidadResidencial;
 import vista.crudUnidadResidencial.vistaCrearUnidadResidencial;
 
@@ -103,6 +104,9 @@ public class Menu extends javax.swing.JFrame {
 
     private void productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productosActionPerformed
         // TODO add your handling code here:
+        vistaConsultarProductoEn vista= new vistaConsultarProductoEn();
+        vista.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_productosActionPerformed
 
     private void unidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unidadesActionPerformed
