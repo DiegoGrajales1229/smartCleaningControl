@@ -26,6 +26,7 @@ public class maquina_unidad {
         this.idServicioDf = idServicioDf;
         this.idMaquinaAseof = idMaquinaAseof;
     }
+    
 
     public int getIdMaquinaU() {
         return idMaquinaU;

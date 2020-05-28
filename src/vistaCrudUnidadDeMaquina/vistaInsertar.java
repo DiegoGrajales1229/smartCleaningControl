@@ -3,41 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.crudUnidadDeProducto;
+package vistaCrudUnidadDeMaquina;
 
-import control.ControlProducto_Unidad;
-import control.ControlProducto_aseo;
+import control.ControlMaquina_Unidad;
+import control.ControlMaquinas_Aseo;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
-import javax.swing.SpinnerNumberModel;
-import modelo.producto_unidad;
-import modelo.productos_aseo;
+import modelo.maquina_unidad;
+import modelo.maquinas_de_aseo;
 import static smartcleaningcontrol.SmartCleaningControl.menu;
 
 /**
  *
- * @author Juan Diego Tabares
+ * @author Diego Alejandro
  */
-public class vistaInsertarUnidadDeProducto extends javax.swing.JFrame {
+public class vistaInsertar extends javax.swing.JFrame {
 
     /**
-     * Creates new form vistaInsertarUnidadDeProducto
+     * Creates new form vistaInsertar
      */
-    
-    LinkedList<productos_aseo> listaPA; // LISTA PRODUCTO ASEO
-    LinkedList<producto_unidad> listaPU; // LISTA PRODUCTO UNIDAD
-    int numeroTanda=0;
-    public vistaInsertarUnidadDeProducto() {
+    int numeroTanda ;
+    LinkedList<maquinas_de_aseo> maquina;
+    LinkedList<maquina_unidad> listaMU;
+    public vistaInsertar() {
         initComponents();
-        
-        listaPA= new LinkedList<>();
-        listaPU= new LinkedList<>();
-        
-        insertar.setVisible(false);
-        SpinnerNumberModel sm= new SpinnerNumberModel();
-        sm.setMinimum(1);
-        
-    
+        numeroTanda = 0;
+        maquina = new LinkedList<>();
+        listaMU = new LinkedList<>();
     }
 
     /**
@@ -52,13 +44,11 @@ public class vistaInsertarUnidadDeProducto extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         comboDetalle = new javax.swing.JComboBox<>();
         comboProducto = new javax.swing.JComboBox<>();
-        fecha = new javax.swing.JTextField();
         agregar = new javax.swing.JButton();
         numero = new javax.swing.JSpinner();
         insertar = new javax.swing.JButton();
         numTanda = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         Producto = new javax.swing.JLabel();
         Producto1 = new javax.swing.JLabel();
 
@@ -101,9 +91,7 @@ public class vistaInsertarUnidadDeProducto extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Fecha");
-
-        Producto.setText("Producto");
+        Producto.setText("Maquina");
 
         Producto1.setText("Solo Bodega");
 
@@ -115,59 +103,54 @@ public class vistaInsertarUnidadDeProducto extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(comboDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(comboProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(89, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(numTanda, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-                                .addGap(141, 141, 141))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(agregar)
-                            .addComponent(insertar))
-                        .addGap(94, 94, 94))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(Producto1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Producto)
-                .addGap(111, 111, 111)
-                .addComponent(jLabel1)
-                .addGap(178, 178, 178))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(comboDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(Producto1)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(comboProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47)
+                                .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(Producto)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(212, 212, 212)
+                        .addComponent(numTanda, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(insertar)
+                            .addComponent(agregar))
+                        .addGap(117, 117, 117))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
                     .addComponent(Producto)
                     .addComponent(Producto1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(agregar)
                     .addComponent(numTanda))
                 .addGap(18, 18, 18)
                 .addComponent(insertar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -188,10 +171,6 @@ public class vistaInsertarUnidadDeProducto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-     
-    
-    
     private void comboDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDetalleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboDetalleActionPerformed
@@ -200,62 +179,38 @@ public class vistaInsertarUnidadDeProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
         insertar.setVisible(true);
         int num= (int) numero.getValue();
-        
-       String item = String.valueOf(comboProducto.getSelectedItem());
+
+        String item = String.valueOf(comboProducto.getSelectedItem());
         String[] sItem= item.split(" - ");
-        int idProducto= Integer.parseInt (sItem[0]);
-        
+        int idMaquina= Integer.parseInt (sItem[0]);
+
         String item2 = String.valueOf(comboDetalle.getSelectedItem());
         String[] sItem2= item2.split(" - ");
         int idDetalle= Integer.parseInt (sItem2[0]);
+
         
-        
-        String fechas= fecha.getText();
         for(int i=0; i<num; i++){
-        producto_unidad objpu=new producto_unidad(idProducto, fechas, idDetalle); //NO OLVIDAR MODIFICAR TRAS CREAR LO DE DETALLE !!!!!!!!!!!!!!!
-        
-        listaPU.add(objpu);
+            maquina_unidad objpu=new maquina_unidad(idMaquina, idDetalle); //NO OLVIDAR MODIFICAR TRAS CREAR LO DE DETALLE !!!!!!!!!!!!!!!;
+            listaMU.add(objpu);
         }
-        
-        
+
         numeroTanda++;
         numTanda.setText(String.valueOf(numeroTanda));
-        
-        // setea a cero el contador 
+
+        // setea a cero el contador
         numero.setValue(1);
-      
+
     }//GEN-LAST:event_agregarActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        ControlProducto_aseo controlp = new ControlProducto_aseo();
-
-        listaPA= controlp.consultarProducto();
-
-        for (int i = 0; i < listaPA.size(); i++) {
-            productos_aseo objetop = listaPA.get(i);
-            String item = String.valueOf(objetop.getIdProductoAseo());
-            System.out.println(item);
-           comboProducto.addItem(item+" - "+objetop.getNombreProductoAseo());
-        }
-        
-        comboDetalle.addItem("2"+" - "+"BODEGA");
-        //  HACER LO MISMO PARA EL comboDetalle    !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        
-        
-    }//GEN-LAST:event_formWindowOpened
 
     private void insertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarActionPerformed
         // TODO add your handling code here:
-        
-        
-        
-        ControlProducto_Unidad control=new ControlProducto_Unidad();
-        
-        boolean rs =control.insertarProductoUnidad(listaPU);
+
+        ControlMaquina_Unidad control=new ControlMaquina_Unidad();
+
+        boolean rs =control.insertarMaquinaUnidad(listaMU);
         if(rs){
             JOptionPane.showMessageDialog(rootPane, "Se insertaron exitosamente");
-            listaPU.clear();
+            listaMU.clear();
         }else{
             JOptionPane.showMessageDialog(rootPane, "No se insertaron los datos");
         }
@@ -263,9 +218,31 @@ public class vistaInsertarUnidadDeProducto extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         menu.setVisible(true);
+        menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        // TODO add your handling code here:
+        ControlMaquinas_Aseo controlma = new ControlMaquinas_Aseo();
+
+        maquina= controlma.consultarMaquinasAseo();
+
+        for (int i = 0; i < maquina.size(); i++) {
+            maquinas_de_aseo objetop = maquina.get(i);
+            String idMaquina = String.valueOf(objetop.getIdMaquinaAseo());
+            System.out.println(idMaquina);
+           comboProducto.addItem(idMaquina+" - "+objetop.getNombreMaquinaAseo());
+        }
+        
+        comboDetalle.addItem("2"+" - "+"BODEGA");
+        //  HACER LO MISMO PARA EL comboDetalle    !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        
+        
+        
+        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -284,20 +261,20 @@ public class vistaInsertarUnidadDeProducto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(vistaInsertarUnidadDeProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaInsertar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(vistaInsertarUnidadDeProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaInsertar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(vistaInsertarUnidadDeProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaInsertar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(vistaInsertarUnidadDeProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaInsertar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vistaInsertarUnidadDeProducto().setVisible(true);
+                new vistaInsertar().setVisible(true);
             }
         });
     }
@@ -308,10 +285,8 @@ public class vistaInsertarUnidadDeProducto extends javax.swing.JFrame {
     private javax.swing.JButton agregar;
     private javax.swing.JComboBox<String> comboDetalle;
     private javax.swing.JComboBox<String> comboProducto;
-    private javax.swing.JTextField fecha;
     private javax.swing.JButton insertar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel numTanda;
     private javax.swing.JSpinner numero;
