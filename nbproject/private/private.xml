@@ -3,11 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/vista/crudDetalleServicio/vistaCrearDetalleServicio.java</file>
-            <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/modelo/detalle_Servicio.java</file>
-            <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/vista/crudDetalleServicio/deleteDetalleServicio.java</file>
-            <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/vista/crudDetalleServicio/updateDetalleServicio.java</file>
-            <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/control/ControlDetalle_Servicio.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/smartcleaningcontrol/SmartCleaningControl.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/vista/CrudAdministrador/Insertar_Administrador.java</file>
+            <file>file:/D:/JavaDocumentos/gitHub/newgit/smartCleaningControl/src/vista/CrudAdministrador/vistaConsultar.java</file>
         </group>
     </open-files>
 </project-private>
