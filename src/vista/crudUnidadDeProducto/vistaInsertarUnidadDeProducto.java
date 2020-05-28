@@ -58,6 +58,9 @@ public class vistaInsertarUnidadDeProducto extends javax.swing.JFrame {
         insertar = new javax.swing.JButton();
         numTanda = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        Producto = new javax.swing.JLabel();
+        Producto1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -98,6 +101,12 @@ public class vistaInsertarUnidadDeProducto extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Fecha");
+
+        Producto.setText("Producto");
+
+        Producto1.setText("Solo Bodega");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -122,18 +131,31 @@ public class vistaInsertarUnidadDeProducto extends javax.swing.JFrame {
                                 .addGap(141, 141, 141))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(agregar)
+                            .addComponent(insertar))
+                        .addGap(94, 94, 94))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(agregar)
-                    .addComponent(insertar))
-                .addGap(94, 94, 94))
+                .addGap(49, 49, 49)
+                .addComponent(Producto1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Producto)
+                .addGap(111, 111, 111)
+                .addComponent(jLabel1)
+                .addGap(178, 178, 178))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addGap(65, 65, 65)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(Producto)
+                    .addComponent(Producto1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,7 +238,7 @@ public class vistaInsertarUnidadDeProducto extends javax.swing.JFrame {
            comboProducto.addItem(item+" - "+objetop.getNombreProductoAseo());
         }
         
-        
+        comboDetalle.addItem("2"+" - "+"BODEGA");
         //  HACER LO MISMO PARA EL comboDetalle    !!!!!!!!!!!!!!!!!!!!!!!!!!!!
         
         
@@ -280,12 +302,15 @@ public class vistaInsertarUnidadDeProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Producto;
+    private javax.swing.JLabel Producto1;
     private javax.swing.JButton agregar;
     private javax.swing.JComboBox<String> comboDetalle;
     private javax.swing.JComboBox<String> comboProducto;
     private javax.swing.JTextField fecha;
     private javax.swing.JButton insertar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel numTanda;
     private javax.swing.JSpinner numero;
