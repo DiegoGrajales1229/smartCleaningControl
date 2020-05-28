@@ -217,16 +217,17 @@ public class empleado {
                 File file = new File(objEm.getFotoEmpleado());
                 fis = new FileInputStream(file);
                 ps = objb.getConexion().prepareStatement(sql);
-                ps.setString(1, objEm.getNombre1Empleado());
-                ps.setString(2, objEm.getNombre2Empleado());
-                ps.setString(3, objEm.getApellido1Empleado());
-                ps.setString(4, objEm.getApellido2Empleado());
-                ps.setBinaryStream(5, fis, (int) file.length());
-                ps.setString(6, objEm.getCorreoEmpleado());
-                ps.setString(7, objEm.getDireccionEmpleado());
-                ps.setInt(8, objEm.getNumeroContratoEmpleado());
-                ps.setDouble(9, objEm.getSalarioMensualEmpleado());
-                ps.setInt(10, objEm.getIdServicioDf());
+                ps.setString(1, objEm.getIdEmpleado());
+                ps.setString(2, objEm.getNombre1Empleado());
+                ps.setString(3, objEm.getNombre2Empleado());
+                ps.setString(4, objEm.getApellido1Empleado());
+                ps.setString(5, objEm.getApellido2Empleado());
+                ps.setBinaryStream(6, fis, (int) file.length());
+                ps.setString(7, objEm.getCorreoEmpleado());
+                ps.setString(8, objEm.getDireccionEmpleado());
+                ps.setInt(9, objEm.getNumeroContratoEmpleado());
+                ps.setDouble(10, objEm.getSalarioMensualEmpleado());
+                ps.setInt(11, objEm.getIdServicioDf());
 
                 ps.executeUpdate();
                 objb.getConexion().commit();

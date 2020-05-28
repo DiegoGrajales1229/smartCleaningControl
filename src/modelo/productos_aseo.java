@@ -122,7 +122,7 @@ public class productos_aseo {
                     id = rs.getInt("idProductoAseo");
                     nombre = rs.getString("nombreProductoAseo");
                     precio= rs.getDouble("precioProductoAseo");
-                     fecha = rs.getString("fechaDeCompraPA");
+                     fecha = rs.getString("fechaDeCompra");
                      idTp= rs.getInt("idTipoProductof");
                     
                     listap.add(new productos_aseo(id, nombre, precio, fecha, idTp));

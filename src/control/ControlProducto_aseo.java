@@ -20,7 +20,7 @@ public class ControlProducto_aseo {
        productos_aseo objTiProAs=new  productos_aseo();
         for (int i = 0; i <listaProAs.size(); i++) {
            productos_aseo pa = listaProAs.get(i);
-            String sql="insert into productos_aseo (nombreProductoAseo, precioProductoAseo, fechaDeCompraPA, idTipoProductof) "
+            String sql="insert into productos_aseo (nombreProductoAseo, precioProductoAseo, fechaDeCompra, idTipoProductof) "
                     + "value('"+ pa.getNombreProductoAseo()+"' , " + pa.getPrecioProductoAseo()+", '"+pa.getFechaDeCompra()  +"' , "+ pa.getIdTipoProductof() +");";
             
             t=pa.sqlProductoAseo(sql);
@@ -31,22 +31,18 @@ public class ControlProducto_aseo {
         
         
     }
-    
-    
-    
+  
      public boolean editarProductoAseo(productos_aseo pa) {
         boolean t=false;
        
             String sql="UPDATE  productos_aseo SET nombreProductoAseo='"+ pa.getNombreProductoAseo()+"', precioProductoAseo=" + pa.getPrecioProductoAseo()+""
-                    + ", fechaDeCompraPA='"+pa.getFechaDeCompra()  +"', idTipoProductof="+ pa.getIdTipoProductof() +" WHERE idProductoAseo="+pa.getIdProductoAseo()+";";
+                    + ", fechaDeCompra='"+pa.getFechaDeCompra()  +"', idTipoProductof="+ pa.getIdTipoProductof() +" WHERE idProductoAseo="+pa.getIdProductoAseo()+";";
 
             t=pa.sqlProductoAseo(sql);
                  return t;
 
     }
-    
-    
-    
+ 
      public LinkedList<productos_aseo> consultarProducto() {
         LinkedList<productos_aseo> lista = new LinkedList<>();
         productos_aseo obj = new productos_aseo();
@@ -58,7 +54,7 @@ public class ControlProducto_aseo {
       public LinkedList<productos_aseo> consultarProductoLibre() {
         LinkedList<productos_aseo> lista = new LinkedList<>();
         productos_aseo obj = new productos_aseo();
-        String sql = "SELECT pa.idProductoAseo, pa.nombreProductoAseo, pa.precioProductoAseo, pa.fechaDeCompraPA, pa.idTipoProductof "
+        String sql = "SELECT pa.idProductoAseo, pa.nombreProductoAseo, pa.precioProductoAseo, pa.fechaDeCompra, pa.idTipoProductof "
                 + "FROM smartcleaningcontrol.productos_aseo pa LEFT JOIN producto_unidad pu " +
                  "ON pa.idProductoAseo=pu.idProductoAseof WHERE pu.idProductoU IS NULL;";
         lista = obj.consultarProducto(sql);

@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
 import modelo.producto_unidadADV;
 import static smartcleaningcontrol.SmartCleaningControl.menu;
-import vista.crudProducto.vistaCrearProducto;
+import vista.crudProducto.vistaInsertarProducto;
 import vista.crudTipoProducto.vistaInsertarTipoProducto;
 
 /**
@@ -267,7 +267,7 @@ public class vistaConsultarProductoEn extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        vistaCrearProducto vista = new vistaCrearProducto();
+        vistaInsertarProducto vista = new vistaInsertarProducto();
         vista.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed

@@ -58,6 +58,8 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
         tx8 = new javax.swing.JTextField();
         comboBox = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        tx9 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -94,7 +96,11 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
         jLabel9.setText("Salario mensual:");
 
         comboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "                    -Seleccione-" }));
+        comboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Insertar");
@@ -103,6 +109,9 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setText("Identificacion:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,17 +132,21 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(tx2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(tx1))
-                                .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel5)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(tx4))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel4)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(tx3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(tx3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tx1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel10)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(tx9)))
                             .addComponent(jLabel6)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(135, 135, 135)
@@ -161,7 +174,11 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(tx9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tx1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -195,7 +212,7 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
                     .addComponent(tx8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
                 .addGap(83, 83, 83))
         );
@@ -208,7 +225,7 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
         
          ControlDetalle_Servicio objCDS = new ControlDetalle_Servicio();
 
-        detalle = objCDS.consultarDetalleServicio();
+        detalle = objCDS.consultarDetalleServicioX();
 
         for (int i = 0; i < detalle.size(); i++) {
             detalle_Servicio objetoDetalle = detalle.get(i);
@@ -221,6 +238,7 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         ControlEmpleado objCE = new ControlEmpleado();
+        String idEmpleado = tx9.getText();
         String nombre1= tx1.getText();
         String nombre2= tx2.getText();
         String apellido1= tx3.getText();
@@ -239,11 +257,32 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
         }
         String foto="D:\\Diego Alejandro\\Documents\\Universidad\\Bases de Datos\\inner_banner.jpg";
 
-        empleado objEm = new empleado(nombre1, nombre2, apellido1, apellido2, foto, correo, direccion, numeroContrato, idServicioF, salario);
+        empleado objEm = new empleado(idEmpleado, nombre1, nombre2, apellido1, apellido2, foto, correo, direccion, numeroContrato, idServicioF, salario);
+        
         boolean t=objCE.insertarEmpleados(objEm);
+        if(t==true){
+            JOptionPane.showMessageDialog(rootPane, "Los datos se insertaron exitosamente");
+            
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "No se insertaron los datos");
+        }
+         tx9.setText("");
+         tx1.setText("");
+         tx2.setText("");
+         tx3.setText("");
+         tx4.setText("");
+         tx5.setText("");
+         tx6.setText("");
+         tx7.setText("");
+         tx8.setText("");
+         
         
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,6 +323,7 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBox;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -300,5 +340,6 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
     private javax.swing.JTextField tx6;
     private javax.swing.JTextField tx7;
     private javax.swing.JTextField tx8;
+    private javax.swing.JTextField tx9;
     // End of variables declaration//GEN-END:variables
 }
