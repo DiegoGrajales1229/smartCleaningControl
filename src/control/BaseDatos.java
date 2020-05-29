@@ -47,7 +47,7 @@ public class BaseDatos {
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/smartcleaningcontrol","root","root");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/smartcc","root","root");
             st = conexion.createStatement();
             t=true;
         

@@ -6,6 +6,9 @@
 package modelo;
 
 import control.BaseDatos;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileInputStream;
 import java.sql.PreparedStatement;
@@ -27,6 +30,8 @@ public class empleado {
     private int idServicioDf,numeroContratoEmpleado;
     private double salarioMensualEmpleado;
 
+    private Image image;
+    
     public empleado() {
     }
 
@@ -42,6 +47,30 @@ public class empleado {
         this.numeroContratoEmpleado=numeroContratoEmpleado;
         this.idServicioDf = idServicioDf;
         this.salarioMensualEmpleado = salarioMensualEmpleado;
+        
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+    
+    public empleado(String idEmpleado, String nombre1Empleado, String nombre2Empleado, String apellido1Empleado, String apellido2Empleado, String fotoEmpleado, String correoEmpleado, String direccionEmpleado, int numeroContratoEmpleado, int idServicioDf, double salarioMensualEmpleado, Image img) {
+        this.idEmpleado = idEmpleado;
+        this.nombre1Empleado = nombre1Empleado;
+        this.nombre2Empleado = nombre2Empleado;
+        this.apellido1Empleado = apellido1Empleado;
+        this.apellido2Empleado = apellido2Empleado;
+        this.fotoEmpleado = fotoEmpleado;
+        this.correoEmpleado = correoEmpleado;
+        this.direccionEmpleado = direccionEmpleado;
+        this.numeroContratoEmpleado=numeroContratoEmpleado;
+        this.idServicioDf = idServicioDf;
+        this.salarioMensualEmpleado = salarioMensualEmpleado;
+        this.image=img;
     }
 
     public empleado(String nombre1Empleado, String nombre2Empleado, String apellido1Empleado, String apellido2Empleado, String fotoEmpleado, String correoEmpleado, String direccionEmpleado, int numeroContratoEmpleado, int idServicioDf, double salarioMensualEmpleado) {
@@ -189,14 +218,20 @@ public class empleado {
         if (objb.crearConexion()) {
             try {
                 rs = objb.getSt().executeQuery(sql);
+                
                 while (rs.next()) {
                     idEmpleado = rs.getString("idEmpleado");
                     nombre1 = rs.getString("nombre1Empleado");
                     nombre2 = rs.getString("nombre2Empleado");
                     apellido1 = rs.getString("apellido1Empleado");
                     apellido2 = rs.getString("apellido2Empleado");
+                    
+                   
                     em.add(new empleado(idEmpleado, nombre1, nombre2, apellido1, apellido2));
+                    
+                     
                 }
+                
             } catch (SQLException ex) {
                 Logger.getLogger(administrador.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -273,12 +308,14 @@ public class empleado {
         String imagen = "";
         String correo = "";
         String direccion = "";
+        
         int numeroContrato=0;
         double salarioMensual = 0.0;
         int idServiciof = 0;
         ResultSet rs = null;
         if (objb.crearConexion()) {
             try {
+                 byte[] bytes = null;
                 rs = objb.getSt().executeQuery(sql);
                 while (rs.next()) {
                     idEmpleado = rs.getString("idEmpleado");
@@ -292,9 +329,10 @@ public class empleado {
                     numeroContrato = rs.getInt("numeroContratoEmpleado");
                     salarioMensual = rs.getDouble("salarioMensualEmpleado");
                     idServiciof = rs.getInt("idServicioDf");
+                    bytes=rs.getBytes("fotoEmpleado");
                     
-                    
-                    le.add(new empleado(idEmpleado, nombre1, nombre2, apellido1, apellido2, imagen, correo, direccion, numeroContrato, idServiciof, salarioMensual));
+                     Image img = Toolkit.getDefaultToolkit().createImage(bytes);
+                    le.add(new empleado(idEmpleado, nombre1, nombre2, apellido1, apellido2, imagen, correo, direccion, numeroContrato, idServiciof, salarioMensual,img));
                     
                 }
             } catch (SQLException ex) {

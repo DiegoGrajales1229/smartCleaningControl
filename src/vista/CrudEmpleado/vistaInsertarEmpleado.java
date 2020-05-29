@@ -7,7 +7,9 @@ package vista.CrudEmpleado;
 
 import control.ControlDetalle_Servicio;
 import control.ControlEmpleado;
+import java.io.File;
 import java.util.LinkedList;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import modelo.detalle_Servicio;
 import modelo.empleado;
@@ -179,8 +181,8 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(tx9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tx1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -255,8 +257,18 @@ public class vistaInsertarEmpleado extends javax.swing.JFrame {
                 idServicioF=get.getIdServicioD();
             }
         }
-        String foto="D:\\Diego Alejandro\\Documents\\Universidad\\Bases de Datos\\inner_banner.jpg";
-
+        String foto="inner_banner.jpg";
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        int result = fileChooser.showOpenDialog(this);
+        
+      
+if (result == JFileChooser.APPROVE_OPTION) {
+    File selectedFile = fileChooser.getSelectedFile();
+     foto=selectedFile.getAbsolutePath();
+}
+        
+        
         empleado objEm = new empleado(idEmpleado, nombre1, nombre2, apellido1, apellido2, foto, correo, direccion, numeroContrato, idServicioF, salario);
         
         boolean t=objCE.insertarEmpleados(objEm);
